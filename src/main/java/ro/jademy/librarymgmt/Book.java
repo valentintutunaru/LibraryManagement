@@ -15,8 +15,8 @@ public class Book {
     private int numberOfPages;
     private String language;
     private String genre;
-    private Date borrowDate;
-    private Date returnDate;
+  //  private Date borrowDate;
+  //  private Date returnDate;
 
     public Book(String title, String author, String publisher, String isbn, int numberOfPages, String language, String genre) {
         this.title = title;
@@ -84,17 +84,17 @@ public class Book {
         this.genre = genre;
     }
 
-    public void setBorrow(int days) {
+   /* public void setBorrow(int days) {
         borrowDate = new Date();
         returnDate = setReturnDate(days);
-    }
+    } */
 
-    public Date setReturnDate(int days) {
+    /* public Date setReturnDate(int days) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(borrowDate);
         cal.add(Calendar.DATE, days); //minus number would decrement the days
         return cal.getTime();
-    }
+    } */
 
     public void printDetails() {
         System.out.println("Book name is: " + title + "\n" +
@@ -104,7 +104,7 @@ public class Book {
                 "Paperback: " + numberOfPages + "\n" +
                 "Language: " + language + "\n" +
                 "Genre: " + genre + "\n" +
-                "Borrowed: " + (borrowDate == null ? "-" : FORMATTER.format(borrowDate)) + "\n" +
-                "Return date: " + (returnDate == null ? "-" : FORMATTER.format(returnDate)));
+        //        "Borrowed: " + (borrowDate == null ? "-" : FORMATTER.format(borrowDate)) + "\n" +
+        //        "Return date: " + (returnDate == null ? "-" : FORMATTER.format(returnDate)));
     }
 }
