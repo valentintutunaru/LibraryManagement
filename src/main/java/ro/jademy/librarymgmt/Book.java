@@ -1,4 +1,4 @@
-package ro.jademy.library;
+package ro.jademy.librarymgmt;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

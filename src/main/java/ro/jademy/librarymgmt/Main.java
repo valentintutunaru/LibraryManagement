@@ -1,7 +1,6 @@
-package ro.jademy.library;
+package ro.jademy.librarymgmt;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 
 public class Main {
