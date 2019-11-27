@@ -1,6 +1,7 @@
 package ro.jademy.librarymgmt;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class Main {
@@ -40,6 +41,20 @@ public class Main {
         System.out.println();
         System.out.println();
         System.out.println();
+
+
+        //reading the option from scanner
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\nWelcome to the Public Library");
+        LibraryMenu.printLibraryMenu();
+        System.out.print("Please choose an option (1-7): ");
+
+        int option = scanner.nextInt();
+
+
+
+
+
 
         //library.searchBook("Riding the Waves: My Story");
         //library.printShelves();
