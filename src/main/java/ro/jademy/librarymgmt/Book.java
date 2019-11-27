@@ -103,8 +103,9 @@ public class Book {
                 "ISBN: " + isbn + "\n" +
                 "Paperback: " + numberOfPages + "\n" +
                 "Language: " + language + "\n" +
-                "Genre: " + genre + "\n" +
+                "Genre: " + genre + "\n"
         //        "Borrowed: " + (borrowDate == null ? "-" : FORMATTER.format(borrowDate)) + "\n" +
-        //        "Return date: " + (returnDate == null ? "-" : FORMATTER.format(returnDate)));
+        //        "Return date: " + (returnDate == null ? "-" : FORMATTER.format(returnDate))
+                     );
     }
 }

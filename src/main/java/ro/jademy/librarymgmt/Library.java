@@ -95,7 +95,7 @@ public class Library {
             removeBook(book.getTitle());
             borrowBooks.add(book);
             // setam cartea ca fiind imprumutata
-            book.setBorrow(15);
+     //       book.setBorrow(15);
         }
     }
 }
