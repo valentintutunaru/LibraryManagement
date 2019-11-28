@@ -1,14 +1,14 @@
 package ro.jademy.librarymgmt;
 
-import java.lang.reflect.Method;
+
 import java.util.Scanner;
 
 public class Menu {
 
 
     private String[] listOfOptions;
-    private String[] listOfMethodsString;
-    private Method[] listOfMethods;
+
+
     private String question;
 
     public void setQuestion(String question) {
@@ -26,13 +26,7 @@ public class Menu {
         this.listOfOptions = listOfOptions.clone();
     }
 
- /*   public void setListOfMethods(String ... listOfMethodsString){
-        this.listOfMethodsString = listOfMethodsString.clone();
-        listOfMethods = Book.class.getMethods();
-        System.out.print(listOfMethods.length);
-    }
 
-*/
 
 
     private static boolean isInteger(String strNum) {
