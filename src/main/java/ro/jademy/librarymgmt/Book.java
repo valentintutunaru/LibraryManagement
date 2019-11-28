@@ -15,10 +15,15 @@ public class Book {
     private int numberOfPages;
     private String language;
     private String genre;
+    private String stock;
     private Date borrowDate;
     private Date returnDate;
 
-    public Book(String title, String author, String publisher, String isbn, int numberOfPages, String language, String genre) {
+    public Book(){
+
+    }
+
+    public Book(String title, String author, String publisher, String isbn, int numberOfPages, String language, String genre, String stock) {
         this.title = title;
         this.author = author;
         this.publisher = publisher;
@@ -26,13 +31,14 @@ public class Book {
         this.numberOfPages = numberOfPages;
         this.language = language;
         this.genre = genre;
+        this.stock = stock;
     }
 
-    public String getTitle() {
+    String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    void setTitle(String title) {
         this.title = title;
     }
 
@@ -40,7 +46,7 @@ public class Book {
         return author;
     }
 
-    public void setAuthor(String author) {
+    void setAuthor(String author) {
         this.author = author;
     }
 
@@ -48,7 +54,7 @@ public class Book {
         return publisher;
     }
 
-    public void setPublisher(String publisher) {
+    void setPublisher(String publisher) {
         this.publisher = publisher;
     }
 
@@ -56,7 +62,7 @@ public class Book {
         return isbn;
     }
 
-    public void setIsbn(String isbn) {
+    void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
@@ -76,27 +82,31 @@ public class Book {
         this.language = language;
     }
 
-    public String getGenre() {
+    String getGenre() {
         return genre;
     }
 
-    public void setGenre(String genre) {
+    void setGenre(String genre) {
         this.genre = genre;
     }
 
-    public void setBorrow(int days) {
+    void setStock(String stock) {
+        this.stock = stock;
+    }
+
+    void setBorrow(int days) {
         borrowDate = new Date();
         returnDate = setReturnDate(days);
     }
 
-    public Date setReturnDate(int days) {
+    Date setReturnDate(int days) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(borrowDate);
         cal.add(Calendar.DATE, days); //minus number would decrement the days
         return cal.getTime();
     }
 
-    public void printDetails() {
+    void printDetails() {
         System.out.println("Book name is: " + title + "\n" +
                 "Author: " + author + "\n"
                 + "Publisher: " + publisher + "\n" +
@@ -104,7 +114,13 @@ public class Book {
                 "Paperback: " + numberOfPages + "\n" +
                 "Language: " + language + "\n" +
                 "Genre: " + genre + "\n" +
+                "Stock: " +stock+"\n"+
                 "Borrowed: " + (borrowDate == null ? "-" : FORMATTER.format(borrowDate)) + "\n" +
                 "Return date: " + (returnDate == null ? "-" : FORMATTER.format(returnDate)));
+    }
+
+    public String toString(){
+
+        return null;
     }
 }
