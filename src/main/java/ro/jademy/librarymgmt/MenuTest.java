@@ -10,8 +10,6 @@ public class MenuTest {
      menuTest.setListOfOptions("Yes","No","Don't know","Maybe");
      menuTest.printMenu();
 
-
-
     }
 
 }
