@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class SearchBook2 {
     public static ArrayList<Book> SearchBook(File fileName, String keySearch) throws FileNotFoundException {
-        ArrayList<Book> searchedBooks = new ArrayList<Book>();
+        ArrayList<Book> searchedBooks = new ArrayList<>();
         Scanner bookListScanner = new Scanner(fileName);
 
         while (bookListScanner.hasNext()) {
