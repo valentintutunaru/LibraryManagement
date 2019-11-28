@@ -1,6 +1,7 @@
 package ro.jademy.librarymgmt;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -15,6 +16,7 @@ public class Book {
     private int numberOfPages;
     private String language;
     private String genre;
+    private ArrayList <Review> reviewList;
   //  private Date borrowDate;
   //  private Date returnDate;
 
@@ -26,6 +28,7 @@ public class Book {
         this.numberOfPages = numberOfPages;
         this.language = language;
         this.genre = genre;
+        this.reviewList = new ArrayList<Review>();
     }
 
     public String getTitle() {
@@ -96,6 +99,16 @@ public class Book {
         return cal.getTime();
     } */
 
+    public void addReview(Review toAdd){
+        this.reviewList.add(toAdd);
+        System.out.println("Review added.");
+    }
+
+    public void printReviews(){
+        if(reviewList.isEmpty()) System.out.println("There are no reviews for this.");
+        else for (Review r : reviewList) System.out.println(r);
+    }
+
     public void printDetails() {
         System.out.println("Book name is: " + title + "\n" +
                 "Author: " + author + "\n"
@@ -105,7 +118,7 @@ public class Book {
                 "Language: " + language + "\n" +
                 "Genre: " + genre + "\n"
         //        "Borrowed: " + (borrowDate == null ? "-" : FORMATTER.format(borrowDate)) + "\n" +
-        //        "Return date: " + (returnDate == null ? "-" : FORMATTER.format(returnDate))
+        //        "Return date: " + (returnDate == ntull ? "-" : FORMATTER.format(returnDate))
                      );
     }
 }
