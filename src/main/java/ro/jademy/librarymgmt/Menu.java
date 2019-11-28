@@ -11,6 +11,10 @@ public class Menu {
     private Method[] listOfMethods;
     private String question;
 
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
     public Menu(String question) {
 
         this.question = question;
@@ -22,13 +26,13 @@ public class Menu {
         this.listOfOptions = listOfOptions.clone();
     }
 
-    public void setListOfMethods(String ... listOfMethodsString){
+ /*   public void setListOfMethods(String ... listOfMethodsString){
         this.listOfMethodsString = listOfMethodsString.clone();
         listOfMethods = Book.class.getMethods();
         System.out.print(listOfMethods.length);
     }
 
-
+*/
 
 
     private static boolean isInteger(String strNum) {
