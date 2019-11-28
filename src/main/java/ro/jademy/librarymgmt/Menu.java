@@ -42,8 +42,8 @@ public class Menu {
     }
 
 
-    public int printMenu() {
-        Scanner sc = new Scanner(System.in);
+    public int printMenu(Scanner sc) {
+        //Scanner sc = new Scanner(System.in);
         System.out.println(question + " " + "\n");
         int i;
         for (i = 1; i <= listOfOptions.length; i++) {
@@ -63,7 +63,7 @@ public class Menu {
             } else System.out.print("Option is not an integer. Insert new option: ");
         }
 
-        sc.close();
+
         System.out.println("Option is " + option);
         return option;
 
