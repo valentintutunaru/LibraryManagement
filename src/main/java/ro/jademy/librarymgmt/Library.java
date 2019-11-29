@@ -71,10 +71,8 @@ public class Library {
 
     public Book searchBookByTitle(String title) {
         for (Shelf shelf : shelves) {
-            Book book = shelf.searchBook(title);
-            if (book != null) {
-                return book;
-            }
+            for (Book book : shelf.getBooks())
+                if (book.getTitle().equals(title)) return book;
         }
         return null;
     }

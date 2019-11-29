@@ -2,6 +2,7 @@ package ro.jademy.librarymgmt;
 
 
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +12,9 @@ public class User {
     private String name;
     private int age;
     private int cnp;
-    private List<Book> borrowedBookList = new ArrayList<>();
-    private List<String> likedGenres = new ArrayList<>();
+    private ArrayList<Book> borrowedBookList = new ArrayList<>();
+    private ArrayList<String> likedGenres = new ArrayList<>();
+
 
     @Override
     public String toString() {
@@ -26,7 +28,7 @@ public class User {
 
        if (!borrowedBookList.isEmpty())
        for (Book b : borrowedBookList) borrowedBooksString += (" "+b.getTitle() + " by " + b.getAuthor()+'\n');
-       else borrowedBooksString += " User has no borrowed books."
+       else borrowedBooksString += " User has no borrowed books.";
 
         returnString = "User" +
                 "ID : " + id + '\n' +
@@ -47,23 +49,23 @@ public class User {
 
     }
 
-    public User(String name, int age, int id, int cnp, List<String> likedGenres) {
+    public User(String name, int age, int id, int cnp, ArrayList<String> likedGenres) {
         this.name = name;
         this.age = age;
         this.id = id;
-        this.likedGenres = likedGenres;
+        this.likedGenres.addAll(likedGenres);
         this.cnp = cnp;
     }
 
 
 
-     public User(String name, int age, int id, int cnp, List<Book> borrowedBookList, List<String> likedGenres) {
+     public User(String name, int age, int id, int cnp, ArrayList<Book> borrowedBookList, List<String> likedGenres) {
         this.name = name;
         this.age = age;
         this.id = id;
         this.cnp = cnp;
-        this.likedGenres = likedGenres;
-        this.borrowedBookList = borrowedBookList;
+         this.likedGenres.addAll(likedGenres);
+        this.borrowedBookList.addAll(borrowedBookList);
 
     }
 
@@ -72,7 +74,7 @@ public class User {
     }
 
     public void setBorrowedBookList(List<Book> borrowedBookList) {
-        this.borrowedBookList = borrowedBookList;
+        this.borrowedBookList.addAll(borrowedBookList);
     }
 
     public void setCnp(int cnp) {
@@ -83,7 +85,7 @@ public class User {
         this.id = id;
     }
 
-    public void setLikedGenres(List<String> likedGenres) {
+    public void setLikedGenres(ArrayList<String> likedGenres) {
         this.likedGenres = likedGenres;
     }
 
@@ -103,11 +105,11 @@ public class User {
         return id;
     }
 
-    public List<Book> getBorrowedBookList() {
+    public ArrayList<Book> getBorrowedBookList() {
         return borrowedBookList;
     }
 
-    public List<String> getLikedGenres() {
+    public ArrayList<String> getLikedGenres() {
         return likedGenres;
     }
 

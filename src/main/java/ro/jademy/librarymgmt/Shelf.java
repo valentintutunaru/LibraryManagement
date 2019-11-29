@@ -6,6 +6,9 @@ public class Shelf {
     ArrayList<Book> books;
     String genre;
 
+    public ArrayList<Book> getBooks() {
+        return books;
+    }
 
     public Shelf(ArrayList<Book> books, String genre) {
         this.books = books;

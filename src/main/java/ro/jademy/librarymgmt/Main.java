@@ -121,10 +121,10 @@ public class Main {
         //library.printShelves();
 
 
-        List<String> genereList1 = new ArrayList<>();
+        ArrayList<String> genereList1 = new ArrayList<>();
         genereList1.add("Novelty");
         genereList1.add("Romance");
-        List<String> genreList2 = new ArrayList<>();
+        ArrayList<String> genreList2 = new ArrayList<>();
         genereList1.add("SF");
         genreList2.add("History");
         User bob = new User("Bob", 20, 1, 23123, genereList1);
@@ -132,7 +132,7 @@ public class Main {
         library.addUser(bob);
         library.addUser(ana);
 
-        library.borrowBook("Riding the Waves: My Story", bob);
+        library.borrowBook("The Activity Journal", bob);
 //        library.printLibraryBooks();
 //        System.out.println("===================");
 //        library.printBorrowedBooks();
