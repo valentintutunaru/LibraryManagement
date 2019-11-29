@@ -1,7 +1,6 @@
 package ro.jademy.librarymgmt;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -16,11 +15,12 @@ public class Book {
     private int numberOfPages;
     private String language;
     private String genre;
-    private ArrayList <Review> reviewList;
-  //  private Date borrowDate;
-  //  private Date returnDate;
+    private Date borrowDate;
+    private Date returnDate;
+    private String link;
 
-    public Book(String title, String author, String publisher, String isbn, int numberOfPages, String language, String genre) {
+    public Book(String title, String author, String publisher, String isbn, int numberOfPages, String language, String genre,
+                String link) {
         this.title = title;
         this.author = author;
         this.publisher = publisher;
@@ -28,7 +28,8 @@ public class Book {
         this.numberOfPages = numberOfPages;
         this.language = language;
         this.genre = genre;
-        this.reviewList = new ArrayList<Review>();
+        this.link = link;
+
     }
 
     public String getTitle() {
@@ -87,26 +88,20 @@ public class Book {
         this.genre = genre;
     }
 
-   /* public void setBorrow(int days) {
+    public String getLink() {return link; }
+
+    public void setLink(String link) {this.link = link; }
+
+     public void setBorrow(int days) {
         borrowDate = new Date();
         returnDate = setReturnDate(days);
-    } */
+    }
 
-    /* public Date setReturnDate(int days) {
+    public Date setReturnDate(int days) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(borrowDate);
         cal.add(Calendar.DATE, days); //minus number would decrement the days
         return cal.getTime();
-    } */
-
-    public void addReview(Review toAdd){
-        this.reviewList.add(toAdd);
-        System.out.println("Review added.");
-    }
-
-    public void printReviews(){
-        if(reviewList.isEmpty()) System.out.println("There are no reviews for this.");
-        else for (Review r : reviewList) System.out.println(r);
     }
 
     public void printDetails() {
@@ -116,9 +111,8 @@ public class Book {
                 "ISBN: " + isbn + "\n" +
                 "Paperback: " + numberOfPages + "\n" +
                 "Language: " + language + "\n" +
-                "Genre: " + genre + "\n"
-        //        "Borrowed: " + (borrowDate == null ? "-" : FORMATTER.format(borrowDate)) + "\n" +
-        //        "Return date: " + (returnDate == ntull ? "-" : FORMATTER.format(returnDate))
-                     );
+                "Genre: " + genre + "\n" +
+                "Borrowed: " + (borrowDate == null ? "-" : FORMATTER.format(borrowDate)) + "\n" +
+                "Return date: " + (returnDate == null ? "-" : FORMATTER.format(returnDate)));
     }
 }

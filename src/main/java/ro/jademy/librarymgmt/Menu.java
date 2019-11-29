@@ -35,7 +35,7 @@ public class Menu {
 
     private int printMenu() {
 
-        Scanner sc = MenuTest.getSc();
+        Scanner sc = MenuStructure.getSc();
         System.out.println(question + " " + "\n");
         int i;
         for (i = 1; i <= listOfOptions.length; i++) {

@@ -3,17 +3,8 @@ package ro.jademy.librarymgmt;
 import java.util.ArrayList;
 
 public class Shelf {
-    private ArrayList<Book> books;
+    ArrayList<Book> books;
     String genre;
-
-    public ArrayList<Book> getBooks() {
-        return books;
-    }
-
-    public Shelf(String genre) {
-        this.books = new ArrayList<Book>();
-        this.genre = genre;
-    }
 
     public Shelf(ArrayList<Book> books, String genre) {
         this.books = books;
@@ -21,7 +12,7 @@ public class Shelf {
     }
 
     public void printShelfBooks() {
-        System.out.println("Genre : "+ genre );
+        System.out.println(genre);
         for (Book book : books) {
             book.printDetails();
         }
@@ -59,8 +50,5 @@ public class Shelf {
             }
         }
         books.remove(bookToRemove);
-    }
-
-    public String getGenre() {return this.genre;
     }
 }

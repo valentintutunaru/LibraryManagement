@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 
 
-public class MenuTest {
+public class MenuStructure {
 
     private Menu mainMenu;
     private Menu librarianMenu;
