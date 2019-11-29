@@ -69,6 +69,14 @@ public class Library {
         }
     }
 
+    public boolean searchBookByTitleAndAuthor (String title, String author) {
+        for (Shelf shelf : shelves) {
+            for(Book book : shelf.getBooks())
+                if (book.getTitle().equals(title) && book.getAuthor().equals(author)) return true;
+        }
+        return false;
+    }
+
     public Book searchBookByTitle(String title) {
         for (Shelf shelf : shelves) {
             for (Book book : shelf.getBooks())

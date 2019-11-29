@@ -32,6 +32,10 @@ public class Book {
 
     }
 
+    public Book() {
+
+    }
+
     public String getTitle() {
         return title;
     }

@@ -13,6 +13,11 @@ public class MenuStructure {
 
     private static Scanner sc;
 
+
+
+
+
+
     private void initMenus() {
         this.mainMenu = new Menu("This is the main menu", "Librarian menu", "Customer menu", "Exit") {
 
@@ -53,6 +58,8 @@ public class MenuStructure {
                         break;
                     case 3:
                         //Register new book
+                        Menu.registerNewBook();
+                        librarianMenu.loadMenu();
                         break;
                     case 4:
                         //Search
