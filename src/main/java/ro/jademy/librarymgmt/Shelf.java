@@ -3,8 +3,12 @@ package ro.jademy.librarymgmt;
 import java.util.ArrayList;
 
 public class Shelf {
-    ArrayList<Book> books;
+    private ArrayList<Book> books;
     String genre;
+
+    public ArrayList<Book> getBooks() {
+        return books;
+    }
 
     public Shelf(String genre) {
         this.books = new ArrayList<Book>();
@@ -55,5 +59,8 @@ public class Shelf {
             }
         }
         books.remove(bookToRemove);
+    }
+
+    public String getGenre() {return this.genre;
     }
 }

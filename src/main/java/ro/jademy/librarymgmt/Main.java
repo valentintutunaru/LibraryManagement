@@ -3,9 +3,13 @@ package ro.jademy.librarymgmt;
 import java.util.ArrayList;
 
 
+
 public class Main {
+    public static Library getLibrary() {
+        return library;
+    }
 
-
+    private static Library library;
 
     public static void main(String[] args) {
         Book book1 = new Book("The Activity Journal", "Mrs Hinch",
@@ -26,7 +30,7 @@ public class Main {
         ArrayList<Book> books = new ArrayList<>();
         ArrayList<Shelf> shelves = new ArrayList<>();
         //Shelf shelf = new Shelf(books, book1.genre);
-        Library library = new Library(shelves);
+        library = new Library(shelves);
         library.addBook(book1);
         library.addBook(book2);
         library.addBook(book3);

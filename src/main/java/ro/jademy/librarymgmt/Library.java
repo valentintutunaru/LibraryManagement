@@ -56,48 +56,51 @@ public class Library {
         }
     }
 
-    public Book searchBookByTitle(String title) {
+
+    public Book searchBookByTitle (String title) {
         for (Shelf shelf : shelves) {
-            Book book = shelf.searchBook(title);
-            if (book != null) {
-                return book;
-            }
+            for(Book b : shelf.getBooks())
+                if(b.getTitle().equals(title)) return b;
         }
         return null;
     }
 
-    public void searchAuthor(String author) {
+
+
+    public ArrayList<Book> searchBooksByTitle(String title) {
+        ArrayList<Book>bookResults = new ArrayList<>();
         for (Shelf shelf : shelves) {
-            Book book = shelf.searchAuthor(author);
-            if (book != null) {
-                book.printDetails();
-            }
+           for(Book b : shelf.getBooks())
+               if (b.getTitle().contains(title)) bookResults.add(b);
         }
+        return  bookResults;
     }
 
-    public void searchGenre(String genre) {
+
+
+    public ArrayList<Book> searchByAuthor(String author) {
+        ArrayList<Book> bookList = new ArrayList<>();
         for (Shelf shelf : shelves) {
-            if (shelf.genre.equals(genre)) {
-                shelf.printShelfBooks();
-            }
+            for(Book b : shelf.getBooks())
+                if (b.getAuthor().contains(author)) bookList.add(b);
+
         }
+        return bookList;
     }
 
-    public void removeBook(String title) {
+    public ArrayList<Book> searchByGenre(String genre) {
+        ArrayList<Book> bookList = new ArrayList<>();
         for (Shelf shelf : shelves) {
-            shelf.removeBook(title);
-        }
+            if (shelf.genre.contains(genre)) {
+               bookList.addAll(shelf.getBooks());
+
+        } return bookList;
     }
 
-    public void borrowBook(String title) {
-        Book book = searchBookByTitle(title);
-        if (book != null) {
-            removeBook(book.getTitle());
-            borrowBooks.add(book);
-            // setam cartea ca fiind imprumutata
-     //       book.setBorrow(15);
-        }
-    }
+
+
+
+
 }
 
 

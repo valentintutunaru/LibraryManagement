@@ -1,82 +1,78 @@
 package ro.jademy.librarymgmt;
 
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
+
+
+
 
 public class MenuTest {
 
+    private Menu mainMenu;
+    private Menu librarianMenu;
+    private Menu customerMenu;
 
     private static Scanner sc;
-    public void start() {
+
+    private void initMenus() {
+        this.mainMenu = new Menu("This is the main menu", "Librarian menu", "Customer menu", "Exit") {
+
+            @Override
+            public void executeThis (int switchNum) {
+                switch(switchNum) {
+                    case 1 : System.out.println("Entering librarian menu");
+                    librarianMenu.loadMenu();
+                    break;
+                    case 2 : System.out.println("Entering customer menu");
+                    break;
+                    case 3 :
+                    break;
+                };
+
+            }
+        };
+
+        this.librarianMenu = new Menu("This is the librarian menu", "Inventory",
+                "Register new book", "Search", "Status of customer", "Main Menu") {
+
+            @Override
+            public void executeThis (int switchNum) {
+                switch(switchNum) {
+                    case 1 : System.out.println("Entering Inventory");
+                        break;
+                    case 2 : System.out.println("Register new book");
+                        break;
+                    case 3 : System.out.println("Search");
+                        break;
+                    case 4 : System.out.println("Status of customer");
+                        break;
+                    case 5 : System.out.println("Main menu");
+                        mainMenu.loadMenu();
+                        break;
+                };
+
+
+
+            }
+        };
+    }
+
+    public static Scanner getSc(){
+     return sc;
+    }
+
+    public void start(){
+
         this.sc = new Scanner(System.in);
-        boolean exit = false;
+        initMenus();
         System.out.println();
-
-        while (!exit) {
-            Menu mainMenu = new Menu("Main Menu");
-            mainMenu.setListOfOptions("Librarian", "Customer");
-            switch (mainMenu.printMenu(this.sc)) {
-                case 1 : loadLibrarianMenu();
-                    break;
-                case 2 : loadCustomerMenu();
-                    break;
-                case 3 : exit = true;
-                    break;
-
-            }
-
-        }
+        mainMenu.loadMenu();
+     }
 
 
     }
 
-    public void loadLibrarianMenu() {
-        boolean exit = false;
 
-        //Codul pentru fiecare functie trebuie introdus mai jos
 
-        while(!exit) {
-            Menu librarianMenu = new Menu("This is the librarian menu");
-            librarianMenu.setListOfOptions("Inventory","Register new book", "Search", "Customer status");
-
-            switch(librarianMenu.printMenu(this.sc)) {
-            case 1 : System.out.println("Inventory");
-            break;
-            case 2 : System.out.println("Register new book");
-            break;
-            case 3 : System.out.println("Search");
-            break;
-            case 4 : System.out.println("Customer status");
-            break;
-            case 5 : exit =  true;
-            break;
-            }
-        }
-     this.sc.close();
-    }
-
-    public void loadCustomerMenu() {
-        boolean exit = false;
-
-        //Codul pentru fiecare functie trebuie introdus mai jos
-
-        while(!exit) {
-            Menu customerMenu = new Menu("This is the customer menu");
-            customerMenu.setListOfOptions("Find a book","Borrow a book", "Status", "Return a book");
-
-            switch(customerMenu.printMenu(this.sc)) {
-                case 1 : System.out.println("Found a book");
-                    break;
-                case 2 : System.out.println("Borrowed a book");
-                    break;
-                case 3 : System.out.println("Showing status");
-                    break;
-                case 4 : System.out.println("Returned a book");
-                    break;
-                case 5 : exit =  true;
-                    break;
-            }
-        }
-    }
-
-}

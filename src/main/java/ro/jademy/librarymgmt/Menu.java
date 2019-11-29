@@ -2,31 +2,22 @@ package ro.jademy.librarymgmt;
 
 
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class Menu {
 
 
     private String[] listOfOptions;
-
-
     private String question;
 
-    public void setQuestion(String question) {
-        this.question = question;
+
+
+    public Menu(String... stuff) {
+
+        this.question = stuff[0];
+        this.listOfOptions = Arrays.copyOfRange(stuff, 1, stuff.length).clone();
+
     }
-
-    public Menu(String question) {
-
-        this.question = question;
-
-    }
-
-
-    public void setListOfOptions(String... listOfOptions) {
-        this.listOfOptions = listOfOptions.clone();
-    }
-
-
 
 
     private static boolean isInteger(String strNum) {
@@ -42,8 +33,9 @@ public class Menu {
     }
 
 
-    public int printMenu(Scanner sc) {
-        //Scanner sc = new Scanner(System.in);
+    private int printMenu() {
+
+        Scanner sc = MenuTest.getSc();
         System.out.println(question + " " + "\n");
         int i;
         for (i = 1; i <= listOfOptions.length; i++) {
@@ -51,7 +43,7 @@ public class Menu {
         }
         int option = 0;
         boolean optionValid = false;
-        System.out.print(i + ") Exit - back" + "\n\n" + "Insert option : ");
+
         while (!optionValid) {
             String optionString = sc.next();
             if (isInteger(optionString)) {
@@ -70,6 +62,15 @@ public class Menu {
     }
 
 
+    public void executeThis(int switchNum) {
+
+    }
 
 
+
+    public void loadMenu() {
+
+        executeThis(printMenu());
+
+    }
 }
