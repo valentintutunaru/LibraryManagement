@@ -4,7 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class Main {
+
+
+    private static Library library;
+
+
+    public static Library getLibrary() {
+        return library;
+    }
+
 
     public static void main(String[] args) {
         Book book1 = new Book("The Activity Journal", "Mrs Hinch",
@@ -65,7 +75,7 @@ public class Main {
         ArrayList<Book> books = new ArrayList<>();
         ArrayList<Shelf> shelves = new ArrayList<>();
         //Shelf shelf = new Shelf(books, book1.genre);
-        Library library = new Library(shelves);
+        library = new Library(shelves);
         library.addBook(book1);
         library.addBook(book2);
         library.addBook(book3);
@@ -122,9 +132,10 @@ public class Main {
 
         library.borrowBook("Riding the Waves: My Story", bob);
 //        library.printLibraryBooks();
-        System.out.println("===================");
-        library.printBorrowedBooks();
-        System.out.println(bob.getBorrowedBookList());
-
+//        System.out.println("===================");
+//        library.printBorrowedBooks();
+//        System.out.println(bob.getBorrowedBookList());
+         MenuStructure m = new MenuStructure();
+         m.start();
     }
 }

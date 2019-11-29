@@ -40,15 +40,16 @@ public class MenuStructure {
             @Override
             public void executeThis (int switchNum) {
                 switch(switchNum) {
-                    case 1 : System.out.println("Entering Inventory");
+                    case 1 : Main.getLibrary().printLibraryBooks();
+                    librarianMenu.loadMenu();
                         break;
-                    case 2 : System.out.println("Register new book");
+                    case 2 :
                         break;
-                    case 3 : System.out.println("Search");
+                    case 3 :
                         break;
-                    case 4 : System.out.println("Status of customer");
+                    case 4 :
                         break;
-                    case 5 : System.out.println("Main menu");
+                    case 5 :
                         mainMenu.loadMenu();
                         break;
                 };
