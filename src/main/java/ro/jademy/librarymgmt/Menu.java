@@ -6,11 +6,8 @@ import java.util.Arrays;
 
 public class Menu {
 
-
     private String[] listOfOptions;
     private String question;
-
-
 
     public Menu(String... stuff) {
 
@@ -18,7 +15,6 @@ public class Menu {
         this.listOfOptions = Arrays.copyOfRange(stuff, 1, stuff.length).clone();
 
     }
-
 
     private static boolean isInteger(String strNum) {
         if (strNum == null) {
@@ -35,7 +31,7 @@ public class Menu {
 
     private int printMenu() {
 
-        Scanner sc = MenuStructure.getSc();
+        Scanner sc = MenuStructure.getScanner();
         System.out.println(question + " " + "\n");
         int i;
         for (i = 1; i <= listOfOptions.length; i++) {
@@ -50,13 +46,11 @@ public class Menu {
                 if (Integer.parseInt(optionString) <= listOfOptions.length + 1 && Integer.parseInt(optionString) > 0) {
                     optionValid = true;
                     option = Integer.parseInt(optionString);
-                    System.out.println("Option is valid. " + "\n");
+
                 } else System.out.print("Number is too high or negative. Insert new option: ");
             } else System.out.print("Option is not an integer. Insert new option: ");
         }
 
-
-        System.out.println("Option is " + option);
         return option;
 
     }

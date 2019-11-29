@@ -5,9 +5,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-
-
-
 public class MenuStructure {
 
     private Menu mainMenu;
@@ -20,60 +17,77 @@ public class MenuStructure {
         this.mainMenu = new Menu("This is the main menu", "Librarian menu", "Customer menu", "Exit") {
 
             @Override
-            public void executeThis (int switchNum) {
-                switch(switchNum) {
-                    case 1 : System.out.println("Entering librarian menu");
-                    librarianMenu.loadMenu();
-                    break;
-                    case 2 : System.out.println("Entering customer menu");
-                    break;
-                    case 3 :
-                    break;
-                };
+            public void executeThis(int switchNum) {
+                switch (switchNum) {
+                    case 1:
+                        System.out.println("Entering librarian menu");
+                        librarianMenu.loadMenu();
+                        break;
+                    case 2:
+                        // Customer menu
+                        break;
+                    case 3:
+                        // Exit
+                        break;
+                }
+                ;
 
             }
         };
 
-        this.librarianMenu = new Menu("This is the librarian menu", "Inventory",
+        this.librarianMenu = new Menu("This is the librarian menu", "Inventory", "Print borrowed books",
                 "Register new book", "Search", "Status of customer", "Main Menu") {
 
             @Override
-            public void executeThis (int switchNum) {
-                switch(switchNum) {
-                    case 1 : Main.getLibrary().printLibraryBooks();
-                    librarianMenu.loadMenu();
+            public void executeThis(int switchNum) {
+                switch (switchNum) {
+                    case 1:
+                        //Inventory
+                        Main.getLibrary().printLibraryBooks();
+                        librarianMenu.loadMenu();
                         break;
-                    case 2 :
+                    case 2:
+                        //Print borrowed books
+                        Main.getLibrary().printBorrowedBooks();
+                        librarianMenu.loadMenu();
                         break;
-                    case 3 :
+                    case 3:
+                        //Register new book
                         break;
-                    case 4 :
+                    case 4:
+                        //Search
                         break;
-                    case 5 :
+                    case 5:
+                        //Status of customers
+                        for (User u : Main.getLibrary().getUserList()) u.printDetails();
+                        librarianMenu.loadMenu();
+                        break;
+                    case 6:
+                        //Main Menu
                         mainMenu.loadMenu();
                         break;
-                };
-
+                }
+                ;
 
 
             }
         };
     }
 
-    public static Scanner getSc(){
-     return sc;
+    public static Scanner getScanner() {
+        return sc;
     }
 
-    public void start(){
+    public void start() {
 
         this.sc = new Scanner(System.in);
         initMenus();
         System.out.println();
         mainMenu.loadMenu();
-     }
-
-
     }
+
+
+}
 
 
 

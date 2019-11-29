@@ -6,6 +6,7 @@ public class Shelf {
     ArrayList<Book> books;
     String genre;
 
+
     public Shelf(ArrayList<Book> books, String genre) {
         this.books = books;
         this.genre = genre;

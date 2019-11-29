@@ -4,11 +4,20 @@ import java.util.ArrayList;
 
 public class Library {
     ArrayList<Shelf> shelves;
-    ArrayList<Book> borrowBooks = new ArrayList<>();
+    private ArrayList<Book> borrowBooks;
+    private ArrayList<User> userList;
+
+    public ArrayList<User> getUserList() {
+        return userList;
+    }
+
     int costBorrow = 1;
 
     public Library(ArrayList<Shelf> shelves) {
+        this.borrowBooks = new ArrayList<>();
         this.shelves = shelves;
+        this.userList = new ArrayList<>();
+
     }
 
 
@@ -45,6 +54,10 @@ public class Library {
             Shelf shelf = new Shelf(newListOfBooks, book.getGenre());
             shelves.add(shelf);
         }
+    }
+
+    public void addUser (User u) {
+        userList.add(u);
     }
 
     public void printBookByTitle(String titleOfBook) {

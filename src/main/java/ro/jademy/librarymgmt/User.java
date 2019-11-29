@@ -14,6 +14,39 @@ public class User {
     private List<Book> borrowedBookList = new ArrayList<>();
     private List<String> likedGenres = new ArrayList<>();
 
+    @Override
+    public String toString() {
+
+
+        String borrowedBooksString = new String();
+        String genreString = new String();
+        String returnString = new String();
+
+       for (String g : likedGenres) genreString += g + ' ';
+
+       if (!borrowedBookList.isEmpty())
+       for (Book b : borrowedBookList) borrowedBooksString += (" "+b.getTitle() + " by " + b.getAuthor()+'\n');
+       else borrowedBooksString += " User has no borrowed books."
+
+        returnString = "User" +
+                "ID : " + id + '\n' +
+                "Name : " + name + '\n' +
+                "Age : " + age + '\n' +
+                "CNP : " + cnp + '\n';
+
+        if(!genreString.isEmpty())  returnString += ( "Liked genres : "+ genreString + '\n' );
+        if(!borrowedBooksString.isEmpty()) returnString += ("Borrowed books :"+ borrowedBooksString + '\n');
+
+        return returnString;
+
+    }
+
+    public void printDetails () {
+
+        System.out.println(this);
+
+    }
+
     public User(String name, int age, int id, int cnp, List<String> likedGenres) {
         this.name = name;
         this.age = age;

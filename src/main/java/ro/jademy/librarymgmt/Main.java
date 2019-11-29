@@ -129,6 +129,8 @@ public class Main {
         genreList2.add("History");
         User bob = new User("Bob", 20, 1, 23123, genereList1);
         User ana = new User("Ana", 16, 2, 38198, genreList2);
+        library.addUser(bob);
+        library.addUser(ana);
 
         library.borrowBook("Riding the Waves: My Story", bob);
 //        library.printLibraryBooks();
