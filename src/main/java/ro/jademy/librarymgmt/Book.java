@@ -15,7 +15,6 @@ public class Book {
     private int numberOfPages;
     private String language;
     private String genre;
-    private String stock;
     private Date borrowDate;
     private Date returnDate;
 
@@ -23,7 +22,8 @@ public class Book {
 
     }
 
-    public Book(String title, String author, String publisher, String isbn, int numberOfPages, String language, String genre, String stock) {
+    public Book(String title, String author, String publisher, String isbn, int numberOfPages, String language,
+                String genre) {
         this.title = title;
         this.author = author;
         this.publisher = publisher;
@@ -31,7 +31,6 @@ public class Book {
         this.numberOfPages = numberOfPages;
         this.language = language;
         this.genre = genre;
-        this.stock = stock;
     }
 
     String getTitle() {
@@ -90,9 +89,6 @@ public class Book {
         this.genre = genre;
     }
 
-    void setStock(String stock) {
-        this.stock = stock;
-    }
 
     void setBorrow(int days) {
         borrowDate = new Date();
@@ -114,13 +110,22 @@ public class Book {
                 "Paperback: " + numberOfPages + "\n" +
                 "Language: " + language + "\n" +
                 "Genre: " + genre + "\n" +
-                "Stock: " +stock+"\n"+
                 "Borrowed: " + (borrowDate == null ? "-" : FORMATTER.format(borrowDate)) + "\n" +
                 "Return date: " + (returnDate == null ? "-" : FORMATTER.format(returnDate)));
     }
 
-    public String toString(){
-
-        return null;
+    @Override
+    public String toString() {
+        return "Book{" +
+                "title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", publisher='" + publisher + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", numberOfPages=" + numberOfPages +
+                ", language='" + language + '\'' +
+                ", genre='" + genre + '\'' +
+                ", borrowDate=" + (borrowDate == null ? "-" : FORMATTER.format(borrowDate)) +
+                ", returnDate=" + (returnDate == null ? "-" : FORMATTER.format(returnDate)) +
+                '}';
     }
 }
