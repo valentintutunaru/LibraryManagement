@@ -81,9 +81,6 @@ public class MenuStructure {
         };
     }
 
-    public static Scanner getScanner() {
-        return sc;
-    }
 
     public void start() {
 

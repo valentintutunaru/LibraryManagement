@@ -31,7 +31,8 @@ public class Menu {
 
     private int printMenu() {
 
-        Scanner sc = MenuStructure.getScanner();
+
+        Scanner sc = new Scanner (System.in);
         System.out.println(question + " " + "\n");
         int i;
         for (i = 1; i <= listOfOptions.length; i++) {
@@ -62,7 +63,8 @@ public class Menu {
 
     public static void registerNewBook () {
 
-        Scanner sc = MenuStructure.getScanner();
+
+        Scanner sc = new Scanner (System.in);
         Book b = new Book();
         b.setTitle(inputString("Title : "));
         b.setAuthor(inputString("Author : "));
@@ -82,7 +84,8 @@ public class Menu {
 
                     } else System.out.print("Number is negative. Insert new option: ");
                 } else System.out.print("Option is not an integer. Insert integer ");
-            }     b.setGenre(inputString("Genre :"));
+            }
+            b.setGenre(inputString("Genre :"));
             b.setLanguage(inputString("Language :"));
             b.setLink(inputString("Link :"));
             Main.getLibrary().addBook(b);
@@ -92,10 +95,14 @@ public class Menu {
 
     public static String inputString (String question) {
 
-        Scanner sc = MenuStructure.getScanner();
+        Scanner sc = new Scanner (System.in);
+
+
         System.out.print('\n'+question);
-        return sc.next();
+        return sc.nextLine();
     }
+
+
 
 
     public void loadMenu() {
