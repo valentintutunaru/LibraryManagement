@@ -8,20 +8,23 @@ import java.util.Scanner;
 public class ManagerMenu {
 
     public static void managerMenu() throws FileNotFoundException {
+        Scanner scanner=new Scanner(System.in);
+
+        boolean menuExit=false;
 
         //Creating arraylist of books from .CSV file
 
         File fileName = new File("onlineBooks_database.csv");
         ArrayList<Book> bookList = ReadingBooks.readingBook(fileName);
 
-        LibraryMenu.printManagerMenu();
-        System.out.print("Please choose an option (1-8): ");
+        while (!menuExit) {
 
-        Scanner scanner=new Scanner(System.in);
+            LibraryMenu.printManagerMenu();
+
+            System.out.print("Please choose an option (1-8): ");
+
+
         int option = scanner.nextInt();
-
-
-        while (option != 8) {
 
             switch (option) {
 
@@ -33,10 +36,7 @@ public class ManagerMenu {
                     PrintBooks.printBookTable(bookList);
                     ListBookTable.printTableBooks(148);
 
-                    System.out.println();
-                    LibraryMenu.printManagerMenu();
-                    System.out.print("Please choose an option (1-8): ");
-                    option = scanner.nextInt();
+
                     break;
 
                 //search for a book
@@ -47,9 +47,7 @@ public class ManagerMenu {
                     ListBookTable.printTableBooks(148);
                     PrintBooks.printBookTable(Library.searchBooks(filter, bookList));
                     ListBookTable.printTableBooks(148);
-                    LibraryMenu.printManagerMenu();
-                    System.out.print("\nPlease choose an option (1-8):");
-                    option = scanner.nextInt();
+
                     break;
 
                 //add new book
@@ -57,48 +55,39 @@ public class ManagerMenu {
                     Library.writingBook(new File("onlineBooks_database.csv"), bookList);
                     ListBookTable.printTableBooks(148);
                     PrintBooks.printBookTable(bookList);
-                    LibraryMenu.printManagerMenu();
-                    System.out.print("\nPlease choose an option (1-8):");
-                    option = scanner.nextInt();
                     break;
 
                 //remove a book
                 case 4:
 
 
-                    LibraryMenu.printManagerMenu();
-                    System.out.print("\nPlease choose an option (1-8):");
-                    option = scanner.nextInt();
+                    System.out.println("remove a book");
                     break;
 
                 //statistics
                 case 5:
 
-                    LibraryMenu.printManagerMenu();
-                    System.out.print("\nPlease choose an option (1-8):");
-                    option = scanner.nextInt();
+                    System.out.println("statistics");
                     break;
 
                 //borrow a book
                 case 6:
 
-                    LibraryMenu.printManagerMenu();
-                    System.out.print("\nPlease choose an option (1-8):");
-                    option = scanner.nextInt();
+                    System.out.println("borrowed book procedure");
                     break;
 
                 //return a book
                 case 7:
 
-                    LibraryMenu.printManagerMenu();
-                    System.out.print("\nPlease choose an option (1-8):");
-                    option = scanner.nextInt();
+                    System.out.println("return book procedure");
                     break;
 
                 //exit
                 case 8:
-                    System.exit(0);
+                    // System.exit(0);
+                menuExit=true;
 
+                    break;
 
                 default:
                     System.out.println("\nPlease choose an option (1-8): ");
