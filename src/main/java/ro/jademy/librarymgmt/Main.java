@@ -8,7 +8,6 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
 
-
         System.out.println("\nWelcome to the Public Library");
         Scanner scanner = new Scanner(System.in);
         LibraryMenu.printLibraryMenu();
@@ -23,7 +22,7 @@ public class Main {
                     break;
 
                 case 2:
-                    UserMenu.userMenu();
+                    LogUser.logMenu();
                     break;
 
                 case 3:
