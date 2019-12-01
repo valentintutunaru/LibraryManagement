@@ -18,9 +18,9 @@ public class Main {
         }*/
 
         ArrayList<Book> searchedBook = Library.SearchBook(csvBooks, "Patricia");
-        for (Book book : searchedBook) {
+/*        for (Book book : searchedBook) {
             book.printDetails();
-        }
+        }*/
 
 /*        System.out.println("Search a book: ");
         SearchBook.readFile("Lauren Willig", fileName);
@@ -28,5 +28,20 @@ public class Main {
         for (Book searchedBook : searchedBooks) {
             searchedBook.printDetails();
         }*/
+
+        String author = "aaaa";
+        String name = "aaaaa";
+        String publisher = "aaaaa";
+        String isbn = "aaaaa";
+        String genre = "aaaa";
+/*        Library.addBook(author, name, genre, publisher, isbn, fileName);
+        Library.addBook(author, name, genre, publisher, isbn, fileName);
+        Library.addBook(author, name, genre, publisher, isbn, fileName);
+        Library.addBook(author, name, genre, publisher, isbn, fileName);
+        Library.addBook(author, name, genre, publisher, isbn, fileName);
+        Library.addBook(author, name, genre, publisher, isbn, fileName);*/
+        Library.editBookOnCsvFile(fileName, "1416971491", publisher);
+        Library.deleteBookFromCsv(fileName,"785339892");
+
     }
 }

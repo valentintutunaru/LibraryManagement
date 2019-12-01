@@ -1,11 +1,13 @@
 package ro.jademy.librarymgmt;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Library {
+    private static Scanner scanner;
+
     ArrayList<Shelf> shelves;
     ArrayList<Book> borrowBooks = new ArrayList<>();
     int costBorrow = 1;
@@ -50,6 +52,106 @@ public class Library {
 
         return searchedBooks;
     }
+
+    public static void addBook(String author, String name, String genre, String publisher, String isbn, File file) {
+        try {
+            //
+            FileWriter fw = new FileWriter(file, true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+
+            pw.println(author + "," + name + "," + genre + "," + publisher + "," + isbn);
+            pw.flush();
+            pw.close();
+
+        } catch (Exception E) {
+        }
+
+    }
+
+    public static void editBookOnCsvFile(File fileName, String editIsbn, String newPublisher) {
+        String tempFile = "temp.csv";
+        File newFile = new File(tempFile);
+        String author = "";
+        String name = "";
+        String genre = "";
+        String publisher = "";
+        String isbn = "";
+
+        try {
+            FileWriter fw = new FileWriter(tempFile, true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            scanner = new Scanner(fileName);
+            scanner.useDelimiter("[,\n]");
+
+            while (scanner.hasNext()) {
+                author = scanner.next();
+                name = scanner.next();
+                genre = scanner.next();
+                publisher = scanner.next();
+                isbn = scanner.next();
+
+                if (isbn.contains(editIsbn)) {
+                    pw.print(author + "," + name + "," + genre + "," + newPublisher + "," + isbn + "\n");
+                } else {
+                    pw.print(author + "," + name + "," + genre + "," + publisher + "," + isbn + "\n");
+                }
+            }
+            scanner.close();
+            pw.flush();
+            pw.close();
+            if (fileName.delete()) {
+                System.out.println("done");
+            } else {
+                System.out.println("error");
+            }
+            newFile.renameTo(fileName);
+
+        } catch (Exception e) {
+
+        }
+    }
+
+    public static void deleteBookFromCsv(File fileName, String removeIsbn) {
+        String tempFile = "removeTemp.csv";
+        File newFile = new File(tempFile);
+        try {
+            FileWriter fw = new FileWriter(tempFile, true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            scanner = new Scanner(fileName);
+            //scanner.useDelimiter("[,\n]");
+            while (scanner.hasNext()) {
+                String bookDescription = scanner.nextLine();
+                String[] bookDetails = bookDescription.split(",");
+                String bookAuthor = bookDetails[0];
+                String bookTitle = bookDetails[1];
+                String bookGenre = bookDetails[2];
+                String bookPublisher = bookDetails[3];
+                String bookIsbn = bookDetails[4];
+
+               /* author = scanner.next();
+                name = scanner.next();
+                genre = scanner.next();
+                publisher = scanner.next();
+                isbn = scanner.next();*/
+                //boolean check=removeIsbn.equals(isbn);
+                System.out.println(removeIsbn.equals(bookIsbn));
+                if (!removeIsbn.equals(bookIsbn)) {
+                    pw.print(bookAuthor + "," + bookTitle + "," + bookGenre + "," + bookPublisher + "," + bookIsbn + "\n");
+                    //System.out.println(isbn);
+                }
+            }
+            scanner.close();
+            pw.close();
+            pw.flush();
+
+        } catch (Exception e) {
+
+        }
+    }
+
 
     public void printBorrowedBooks() {
         for (Book lendBook : borrowBooks) {
@@ -138,6 +240,7 @@ public class Library {
         }
     }
 }
+
 
 
 
