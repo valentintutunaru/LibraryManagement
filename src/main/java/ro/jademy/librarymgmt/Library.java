@@ -1,6 +1,11 @@
 package ro.jademy.librarymgmt;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Library {
     ArrayList<Shelf> shelves;
@@ -98,6 +103,61 @@ public class Library {
             book.setBorrow(15);
         }
     }
+
+
+
+    public static ArrayList<Book> writingBook (File fileName, ArrayList<Book>bookList) throws FileNotFoundException {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please input a new book:");
+        System.out.print("Author:");
+        String newAuthor = scanner.nextLine();
+        System.out.print("Title:");
+        String newTitle = scanner.nextLine();
+        System.out.print("Genre:");
+        String newGenre = scanner.nextLine();
+        System.out.print("Publisher:");
+        String newPublisher = scanner.nextLine();
+        System.out.print("ISBN:");
+        String newISBN = scanner.nextLine();
+        System.out.print("Description:");
+        String newDescr = scanner.nextLine();
+        bookList.add(new Book(newAuthor, newTitle, newGenre, newPublisher, newISBN, newDescr));
+        PrintBooks.printBookTable(bookList);
+
+        FileWriter fw = null;
+        try {
+            fw = new FileWriter(fileName, true);
+            fw.write(newAuthor + "|" + newTitle + "|" + newGenre + "|" + newPublisher + "|" + newISBN + "|" + newDescr+"\n");
+            fw.close();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        return bookList;
+    }
+
+
+
+        public static ArrayList<Book> searchBooks(String filter, ArrayList<Book> bookList) {
+            ArrayList<Book> searchedBooksList = new ArrayList<>();
+
+            for (Book book : bookList) {
+                if (book.getAuthor().toLowerCase().contains(filter.toLowerCase()) ||
+                        book.getTitle().toLowerCase().contains(filter.toLowerCase()) ||
+                        book.getGenre().toLowerCase().contains(filter.toLowerCase()) ||
+                        book.getPublisher().toLowerCase().contains(filter.toLowerCase()) ||
+                        book.getIsbn().contains(filter))  {
+                searchedBooksList.add(book);}
+
+            }
+            return searchedBooksList;
+
+        }
+
 }
 
 
