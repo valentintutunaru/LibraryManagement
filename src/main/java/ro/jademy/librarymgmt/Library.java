@@ -137,7 +137,7 @@ public class Library {
                 publisher = scanner.next();
                 isbn = scanner.next();*/
                 //boolean check=removeIsbn.equals(isbn);
-                System.out.println(removeIsbn.equals(bookIsbn));
+                //System.out.println(removeIsbn.equals(bookIsbn));
                 if (!removeIsbn.equals(bookIsbn)) {
                     pw.print(bookAuthor + "," + bookTitle + "," + bookGenre + "," + bookPublisher + "," + bookIsbn + "\n");
                     //System.out.println(isbn);
