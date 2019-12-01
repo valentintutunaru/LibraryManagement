@@ -40,7 +40,7 @@ public class Main {
         Library.addBook(author, name, genre, publisher, isbn, fileName);
         Library.addBook(author, name, genre, publisher, isbn, fileName);
         Library.addBook(author, name, genre, publisher, isbn, fileName);*/
-        Library.editBookOnCsvFile(fileName, "1416971491", publisher);
+        Library.editBookPublisherOnCsvFile(fileName, "1416971491", publisher);
         Library.deleteBookFromCsv(fileName,"785339892");
 
     }

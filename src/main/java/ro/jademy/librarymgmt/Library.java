@@ -69,14 +69,9 @@ public class Library {
 
     }
 
-    public static void editBookOnCsvFile(File fileName, String editIsbn, String newPublisher) {
+    public static void editBookPublisherOnCsvFile(File fileName, String editIsbn, String newPublisher) {
         String tempFile = "temp.csv";
         File newFile = new File(tempFile);
-        String author = "";
-        String name = "";
-        String genre = "";
-        String publisher = "";
-        String isbn = "";
 
         try {
             FileWriter fw = new FileWriter(tempFile, true);
@@ -86,11 +81,11 @@ public class Library {
             scanner.useDelimiter("[,\n]");
 
             while (scanner.hasNext()) {
-                author = scanner.next();
-                name = scanner.next();
-                genre = scanner.next();
-                publisher = scanner.next();
-                isbn = scanner.next();
+                String author = scanner.next();
+                String name = scanner.next();
+                String genre = scanner.next();
+                String publisher = scanner.next();
+                String isbn = scanner.next();
 
                 if (isbn.contains(editIsbn)) {
                     pw.print(author + "," + name + "," + genre + "," + newPublisher + "," + isbn + "\n");
