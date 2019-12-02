@@ -8,24 +8,27 @@ public class Book {
 
     private static final SimpleDateFormat FORMATTER = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss");
 
-    private String title;
+
     private String author;
+    private String title;
+    private String genre;
     private String publisher;
     private String isbn;
-    private int numberOfPages;
-    private String language;
-    private String genre;
+    private String description;
+
     private Date borrowDate;
     private Date returnDate;
 
-    public Book(String title, String author, String publisher, String isbn, int numberOfPages, String language, String genre) {
-        this.title = title;
+    public Book(String author, String title, String genre, String publisher, String isbn, String description) {
+
         this.author = author;
+        this.title = title;
+        this.genre = genre;
         this.publisher = publisher;
         this.isbn = isbn;
-        this.numberOfPages = numberOfPages;
-        this.language = language;
-        this.genre = genre;
+        this.description=description;
+
+
     }
 
     public String getTitle() {
@@ -60,20 +63,12 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public int getNumberOfPages() {
-        return numberOfPages;
+    public String getDescription() {
+        return description;
     }
 
-    public void setNumberOfPages(int numberOfPages) {
-        this.numberOfPages = numberOfPages;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getGenre() {
@@ -101,9 +96,8 @@ public class Book {
                 "Author: " + author + "\n"
                 + "Publisher: " + publisher + "\n" +
                 "ISBN: " + isbn + "\n" +
-                "Paperback: " + numberOfPages + "\n" +
-                "Language: " + language + "\n" +
                 "Genre: " + genre + "\n" +
+                "Description:"+description+"\n"+
                 "Borrowed: " + (borrowDate == null ? "-" : FORMATTER.format(borrowDate)) + "\n" +
                 "Return date: " + (returnDate == null ? "-" : FORMATTER.format(returnDate)));
     }

@@ -1,6 +1,8 @@
 package ro.jademy.librarymgmt;
 
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Library {
     ArrayList<Shelf> shelves;
@@ -11,6 +13,74 @@ public class Library {
         this.shelves = shelves;
     }
 
+    public static ArrayList<Book> writingBook(File fileName, ArrayList<Book> bookList) throws FileNotFoundException {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please input a new book:");
+        System.out.print("Author:");
+        String newAuthor = scanner.nextLine();
+        System.out.print("Title:");
+        String newTitle = scanner.nextLine();
+        System.out.print("Genre:");
+        String newGenre = scanner.nextLine();
+        System.out.print("Publisher:");
+        String newPublisher = scanner.nextLine();
+        System.out.print("ISBN:");
+        String newISBN = scanner.nextLine();
+        System.out.print("Description:");
+        String newDescr = scanner.nextLine();
+        bookList.add(new Book(newAuthor, newTitle, newGenre, newPublisher, newISBN, newDescr));
+        PrintBooks.printBookTable(bookList);
+
+        FileWriter fw = null;
+        try {
+            fw = new FileWriter(fileName, true);
+            fw.write(newAuthor + "|" + newTitle + "|" + newGenre + "|" + newPublisher + "|" + newISBN + "|" + newDescr + "\n");
+            fw.close();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        return bookList;
+    }
+
+    public static ArrayList<Book> searchBooks(String filter, ArrayList<Book> bookList) {
+        ArrayList<Book> searchedBooksList = new ArrayList<>();
+
+        for (Book book : bookList)
+        {
+            if (book.getAuthor().toLowerCase().contains(filter.toLowerCase()) ||
+                    book.getTitle().toLowerCase().contains(filter.toLowerCase()) ||
+                    book.getGenre().toLowerCase().contains(filter.toLowerCase()) ||
+                    book.getPublisher().toLowerCase().contains(filter.toLowerCase()) ||
+                    book.getIsbn().contains(filter)) {
+                searchedBooksList.add(book);
+            }
+        }
+        return searchedBooksList;
+    }
+
+
+    public static void writingUser(String firstName, String lastName, String mailAddress,
+                                   String username, String password, File file) {
+        try
+        {
+            FileWriter fw = new FileWriter(file, true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            int idUser = (int) (Math.random() * 99999) + 10000;
+
+            pw.println(idUser + "," + firstName + "," + lastName + "," + mailAddress + "," + username + "," + password);
+            pw.flush();
+            pw.close();
+
+        }
+        catch (Exception E)
+        {
+            System.out.println("Error");
+        }
+    }
 
     public void printBorrowedBooks() {
         for (Book lendBook : borrowBooks) {
@@ -98,6 +168,7 @@ public class Library {
             book.setBorrow(15);
         }
     }
+
 }
 
 
