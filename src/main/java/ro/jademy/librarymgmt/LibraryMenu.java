@@ -10,6 +10,14 @@ public class LibraryMenu {
         System.out.println("***************************");
     }
 
+    public static void printLogUser() {
+        System.out.println("***************************");
+        System.out.println("* 1. Sign In              *");
+        System.out.println("* 2. Sign Up              *");
+        System.out.println("* 3. EXIT                 *");
+        System.out.println("***************************");
+    }
+
     public static void printManagerMenu(){
         System.out.println("***************************");
         System.out.println("* 1. List the books       *");
