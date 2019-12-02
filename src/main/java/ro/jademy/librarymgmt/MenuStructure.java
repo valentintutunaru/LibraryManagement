@@ -7,15 +7,13 @@ import java.util.Scanner;
 
 public class MenuStructure {
 
+
     private Menu mainMenu;
     private Menu librarianMenu;
     private Menu customerMenu;
 
+
     private static Scanner sc;
-
-
-
-
 
 
     private void initMenus() {
@@ -88,6 +86,7 @@ public class MenuStructure {
         initMenus();
         System.out.println();
         mainMenu.loadMenu();
+
     }
 
 

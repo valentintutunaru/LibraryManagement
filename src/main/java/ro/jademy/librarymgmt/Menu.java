@@ -4,17 +4,21 @@ package ro.jademy.librarymgmt;
 import java.util.Scanner;
 import java.util.Arrays;
 
+
 public class Menu {
+
 
     private String[] listOfOptions;
     private String question;
 
-    public Menu(String... stuff) {
 
-        this.question = stuff[0];
-        this.listOfOptions = Arrays.copyOfRange(stuff, 1, stuff.length).clone();
+    public Menu(String ... strings) {
+
+        this.question = strings[0];
+        this.listOfOptions = Arrays.copyOfRange(strings, 1, strings.length).clone();
 
     }
+
 
     public static boolean isInteger(String strNum) {
         if (strNum == null) {
@@ -61,6 +65,7 @@ public class Menu {
 
     }
 
+
     public static void registerNewBook () {
 
 
@@ -69,7 +74,7 @@ public class Menu {
         b.setTitle(inputString("Title : "));
         b.setAuthor(inputString("Author : "));
 
-        //if(true) {
+
        if(!Main.getLibrary().searchBookByTitleAndAuthor(b.getTitle(), b.getAuthor())) {
             b.setPublisher(inputString("Publisher : "));
             b.setIsbn(inputString("Isbn :"));
@@ -93,19 +98,18 @@ public class Menu {
         else System.out.println("Book is already in library.");
     }
 
+
     public static String inputString (String question) {
 
         Scanner sc = new Scanner (System.in);
-
-
         System.out.print('\n'+question);
         return sc.nextLine();
+
     }
 
 
-
-
     public void loadMenu() {
+
 
         executeThis(printMenu());
 

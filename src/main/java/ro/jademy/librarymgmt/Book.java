@@ -119,4 +119,11 @@ public class Book {
                 "Borrowed: " + (borrowDate == null ? "-" : FORMATTER.format(borrowDate)) + "\n" +
                 "Return date: " + (returnDate == null ? "-" : FORMATTER.format(returnDate)));
     }
+
+
+    public void addBook() {
+        Main.getLibrary().addBook(this);
+    }
+
+
 }
