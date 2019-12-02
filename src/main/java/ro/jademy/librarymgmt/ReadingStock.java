@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class ReadingStock {
 
-    public static ArrayList<Stock> readingStock (File fileName) throws FileNotFoundException {
+    public static ArrayList<Stock> readingStock(File fileName) throws FileNotFoundException {
 
         ArrayList<Stock> stockList = new ArrayList<>();
 
@@ -19,14 +19,14 @@ public class ReadingStock {
 
         while (databaseScanner.hasNext()) {
             strIsbn = databaseScanner.next();
-            intStock=databaseScanner.nextInt();
+            intStock=Integer.parseInt(databaseScanner.next());
 
 
-           stockList.add(new Stock(strIsbn, intStock));
+
+            stockList.add(new Stock(strIsbn, intStock));
         }
 
         return stockList;
-
 
 
     }

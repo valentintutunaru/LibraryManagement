@@ -3,7 +3,7 @@ package ro.jademy.librarymgmt;
 public class Stock {
 
     private String isbn;
-    private int stock;
+    private static int stock;
 
 
     public Stock(String isbn, int stock){
