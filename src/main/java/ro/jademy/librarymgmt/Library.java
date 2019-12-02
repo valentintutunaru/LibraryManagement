@@ -37,9 +37,7 @@ public class Library {
             fw = new FileWriter(fileName, true);
             fw.write(newAuthor + "|" + newTitle + "|" + newGenre + "|" + newPublisher + "|" + newISBN + "|" + newDescr + "\n");
             fw.close();
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return bookList;
@@ -48,8 +46,7 @@ public class Library {
     public static ArrayList<Book> searchBooks(String filter, ArrayList<Book> bookList) {
         ArrayList<Book> searchedBooksList = new ArrayList<>();
 
-        for (Book book : bookList)
-        {
+        for (Book book : bookList) {
             if (book.getAuthor().toLowerCase().contains(filter.toLowerCase()) ||
                     book.getTitle().toLowerCase().contains(filter.toLowerCase()) ||
                     book.getGenre().toLowerCase().contains(filter.toLowerCase()) ||
@@ -61,11 +58,18 @@ public class Library {
         return searchedBooksList;
     }
 
+    /**This method writes user object into a file
+     * @param firstName
+     * @param lastName
+     * @param mailAddress
+     * @param username
+     * @param password
+     * @param file
+     */
 
     public static void writingUser(String firstName, String lastName, String mailAddress,
                                    String username, String password, File file) {
-        try
-        {
+        try {
             FileWriter fw = new FileWriter(file, true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
@@ -75,9 +79,7 @@ public class Library {
             pw.flush();
             pw.close();
 
-        }
-        catch (Exception E)
-        {
+        } catch (Exception E) {
             System.out.println("Error");
         }
     }
