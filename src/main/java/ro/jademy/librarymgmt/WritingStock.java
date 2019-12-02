@@ -1,12 +1,11 @@
 package ro.jademy.librarymgmt;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class WritingStock {
+    private static Scanner x;
 
     public static ArrayList<Stock> writingStock(File fileName, String newIsbn, ArrayList<Stock> stockList) throws FileNotFoundException {
 
@@ -18,6 +17,11 @@ public class WritingStock {
             if (stock.getIsbn().equals(newIsbn)) {
                 stock.setStock(stock.getStock() + 1);
                 isInList = true;
+                String foundIsbn=stock.getIsbn();
+                String newStock = Integer.toString(stock.getStock());
+                editRecord("stock_database.csv", foundIsbn, newStock);
+
+
                 break;
                 //edit csv file
             }
@@ -43,29 +47,58 @@ public class WritingStock {
 
 
 
-        /*for (int i = 0; i < stockList.size(); i++) {
-            if (stockList.get(i).getIsbn().equals(isbn)) {
-                stockList.get(i).setStock(Stock.getStock() + 1);
-            //edit csv file
-            } else {
-
-                stockList.add(new Stock(isbn, 1));
-
-                FileWriter fw = null;
-                try {
-                    fw = new FileWriter(fileName, true);
-                    fw.write(isbn + "|" + defaultStock + "\n");
-                    fw.close();
-
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }*/
-
         return stockList;
+
+    }
+
+    public static void editRecord(String filePath, String newIsbn, String newStock) {
+
+        String tempFile = "stock_database.csv";
+        File oldFile = new File(filePath);
+        File newFile = new File(tempFile);
+        String isbn = "";
+        String stock = "";
+
+        try {
+            FileWriter fw = new FileWriter(tempFile, true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            x = new Scanner(new File(filePath));
+            x.useDelimiter("[|\n]");
+
+
+            while (x.hasNext())
+            {
+                isbn=x.next();
+                stock=x.next();
+
+
+                if (isbn.equals(newIsbn))
+                {
+                    pw.println(newIsbn+"|"+newStock);
+
+                }
+                else
+                {
+                    pw.println(isbn+"|"+stock);
+                }
+            }
+            x.close();
+            pw.flush();
+            pw.close();
+            oldFile.delete();
+            File dump=new File(filePath);
+            newFile.renameTo(dump);
+
+
+        }
+
+        catch (Exception e)
+
+        {
+            System.out.println("Error!");
+
+        }
 
     }
 }
