@@ -74,7 +74,6 @@ public class Main {
 
         ArrayList<Book> books = new ArrayList<>();
         ArrayList<Shelf> shelves = new ArrayList<>();
-        //Shelf shelf = new Shelf(books, book1.genre);
         library = new Library(shelves);
         library.addBook(book1);
         library.addBook(book2);
@@ -100,25 +99,6 @@ public class Main {
         System.out.println();
         System.out.println();
 
-        //library.searchBook("Riding the Waves: My Story");
-        //library.printShelves();
-        //library.searchAuthor("Mrs Hinch");
-        /*Book book = new Book();
-        library.addBook(book);
-        library.printLibraryBooks();*/
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        //library.searchGenre("Biographies");
-        //shelf.printShelfBooks();
-        //shelf.removeBook("The Activity Journal");
-        //System.out.println();
-        //System.out.println();
-        //shelf.printShelfBooks();
-        //library.printLibraryBooks();
-        //library.removeBook1("Riding the Waves: My Story");
-        //library.printLibraryBooks();
-        //library.printShelves();
 
 
         ArrayList<String> genereList1 = new ArrayList<>();
@@ -133,10 +113,7 @@ public class Main {
         library.addUser(ana);
 
         library.borrowBook("The Activity Journal", bob);
-//        library.printLibraryBooks();
-//        System.out.println("===================");
-//        library.printBorrowedBooks();
-//        System.out.println(bob.getBorrowedBookList());
+
          MenuStructure m = new MenuStructure();
          m.start();
     }
