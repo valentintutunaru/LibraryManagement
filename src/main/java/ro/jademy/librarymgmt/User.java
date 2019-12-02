@@ -1,5 +1,7 @@
 package ro.jademy.librarymgmt;
 
+import java.util.ArrayList;
+
 public class User {
     private String userID;
     private String firstName;

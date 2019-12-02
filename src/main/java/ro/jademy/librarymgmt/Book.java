@@ -1,6 +1,7 @@
 package ro.jademy.librarymgmt;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -15,9 +16,10 @@ public class Book {
     private String publisher;
     private String isbn;
     private String description;
-
     private Date borrowDate;
     private Date returnDate;
+    private ArrayList<String> userIdList = new ArrayList<>();
+
 
     public Book(String author, String title, String genre, String publisher, String isbn, String description) {
 
