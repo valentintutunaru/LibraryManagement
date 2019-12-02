@@ -8,34 +8,39 @@ import java.util.ArrayList;
 
 public class WritingStock {
 
-    public static ArrayList<Stock> writingStock(File fileName, String isbn, ArrayList<Stock> stockList) throws FileNotFoundException {
+    public static ArrayList<Stock> writingStock(File fileName, String newIsbn, ArrayList<Stock> stockList) throws FileNotFoundException {
 
         int defaultStock = 1;
-        /*boolean isInList = false;
+        boolean isInList = false;
 
         for (Stock stock : stockList) {
 
-            if (stock.getIsbn().equals(isbn)) {
+            if (stock.getIsbn().equals(newIsbn)) {
                 stock.setStock(stock.getStock() + 1);
                 isInList = true;
                 break;
                 //edit csv file
             }
+
         }
-        if (isInList = false) {*/
-          stockList.add(new Stock(isbn, 1));
+
+        if (isInList) {
+        } else {
+            stockList.add(new Stock(newIsbn, 1));
+
 
             FileWriter fw = null;
             try {
                 fw = new FileWriter(fileName, true);
-                fw.write(isbn + "|" + defaultStock + "\n");
+                fw.write(newIsbn + "|" + defaultStock + "\n");
                 fw.close();
 
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        //}
+        }
+
 
 
         /*for (int i = 0; i < stockList.size(); i++) {

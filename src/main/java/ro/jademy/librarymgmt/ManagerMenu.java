@@ -68,6 +68,14 @@ public class ManagerMenu {
                     Library.writingBook(new File("onlineBooks_database.csv"), bookList);
                     String newIsbn=bookList.get(bookList.size()-1).getIsbn();
                     WritingStock.writingStock(new File("stock_database.csv"),newIsbn, stockList);
+
+
+                    for (Stock stock : stockList) {
+                        System.out.println(stock.getIsbn()+" "+stock.getStock());
+
+                    }
+
+
                     ListBookTable.printTableBooks(148);
                     PrintBooks.printBookTable(bookList);
                     LibraryMenu.printManagerMenu();
