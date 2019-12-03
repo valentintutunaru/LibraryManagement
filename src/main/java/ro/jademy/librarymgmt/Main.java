@@ -1,8 +1,6 @@
 package ro.jademy.librarymgmt;
 
 import java.util.ArrayList;
-import java.util.List;
-
 
 
 public class Main {
@@ -16,7 +14,7 @@ public class Main {
     }
 
 
-    public static void main(String[] args) {
+   /*  public static void main(String[] args) {
         Book book1 = new Book("The Activity Journal", "Mrs Hinch",
                 "Michael Joseph (17 Oct. 2019)", "0241426847", 288, "English",
                 "Business Motivation Skills",
@@ -116,7 +114,19 @@ public class Main {
 
          MenuStructure m = new MenuStructure();
       //   m.start();
-        ExportToJson.export(library);
+        UseGson.export(library);
+
+    } */
+
+    public static void main(String[] args) {
+        library = new Library();
+        library = UseGson.importLibrary();
+
+        MenuStructure m = new MenuStructure();
+        m.start();
+
+        UseGson.exportLibrary(library);
 
     }
+
 }

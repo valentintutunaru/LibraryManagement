@@ -7,6 +7,10 @@ public class Library {
     private ArrayList<Book> borrowBooks;
     private ArrayList<User> userList;
 
+    public Library() {
+
+    }
+
     public ArrayList<User> getUserList() {
         return userList;
     }
