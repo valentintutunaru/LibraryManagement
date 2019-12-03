@@ -115,6 +115,8 @@ public class Main {
         library.borrowBook("The Activity Journal", bob);
 
          MenuStructure m = new MenuStructure();
-         m.start();
+      //   m.start();
+        ExportToJson.export(library);
+
     }
 }
