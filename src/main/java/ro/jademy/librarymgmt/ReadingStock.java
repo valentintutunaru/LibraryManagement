@@ -11,19 +11,19 @@ public class ReadingStock {
 
         ArrayList<Stock> stockList = new ArrayList<>();
 
-        String strIsbn = "";
-        int intStock;
+        String strIsbn="";
+        String strStock="";
 
         Scanner databaseScanner = new Scanner(fileName);
         databaseScanner.useDelimiter("[|\n]");
 
         while (databaseScanner.hasNext()) {
             strIsbn = databaseScanner.next();
-            intStock=Integer.parseInt(databaseScanner.next());
+            strStock=databaseScanner.next();
 
 
 
-            stockList.add(new Stock(strIsbn, intStock));
+            stockList.add(new Stock(strIsbn, strStock));
         }
 
         return stockList;

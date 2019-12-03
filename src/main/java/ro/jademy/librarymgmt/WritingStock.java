@@ -12,14 +12,18 @@ public class WritingStock {
         int defaultStock = 1;
         boolean isInList = false;
 
+
         for (Stock stock : stockList) {
 
             if (stock.getIsbn().equals(newIsbn)) {
-                stock.setStock(stock.getStock() + 1);
+                System.out.println(stock.getIsbn()+" "+stock.getStock());
+                int stockUpdated=Integer.parseInt(stock.getStock());
+                stockUpdated++;
+                stock.setStock(Integer.toString(stockUpdated));
                 isInList = true;
                 String foundIsbn=stock.getIsbn();
-                String newStock = Integer.toString(stock.getStock());
-                editRecord("stock_database.csv", foundIsbn, newStock);
+                String newStock = stock.getStock();
+                editRecord("stock_database.csv", foundIsbn, newIsbn, newStock);
 
 
                 break;
@@ -30,14 +34,16 @@ public class WritingStock {
 
         if (isInList) {
         } else {
-            stockList.add(new Stock(newIsbn, 1));
+            stockList.add(new Stock(newIsbn, "1"));
 
 
-            FileWriter fw = null;
+            //FileWriter fw = null;
             try {
-                fw = new FileWriter(fileName, true);
-                fw.write(newIsbn + "|" + defaultStock + "\n");
-                fw.close();
+                FileWriter fw = new FileWriter(fileName, true);
+                BufferedWriter bw=new BufferedWriter(fw);
+                PrintWriter pw = new PrintWriter(bw);
+                pw.println(newIsbn + "|" + "1");
+                pw.close();
 
 
             } catch (IOException e) {
@@ -51,9 +57,9 @@ public class WritingStock {
 
     }
 
-    public static void editRecord(String filePath, String newIsbn, String newStock) {
+    public static void editRecord(String filePath, String editTerm, String newIsbn, String newStock) {
 
-        String tempFile = "stock_database.csv";
+        String tempFile = "temp.csv";
         File oldFile = new File(filePath);
         File newFile = new File(tempFile);
         String isbn = "";
@@ -73,20 +79,24 @@ public class WritingStock {
                 stock=x.next();
 
 
-                if (isbn.equals(newIsbn))
+                if (isbn.equals(editTerm))
                 {
-                    pw.println(newIsbn+"|"+newStock);
+                    pw.print(newIsbn+"|"+newStock+"\n");
 
                 }
                 else
                 {
-                    pw.println(isbn+"|"+stock);
+                    pw.print(isbn+"|"+stock+"\n");
                 }
             }
             x.close();
             pw.flush();
             pw.close();
+
+            System.gc();
             oldFile.delete();
+
+
             File dump=new File(filePath);
             newFile.renameTo(dump);
 

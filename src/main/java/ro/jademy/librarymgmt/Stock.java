@@ -3,10 +3,10 @@ package ro.jademy.librarymgmt;
 public class Stock {
 
     private String isbn;
-    private static int stock;
+    private String stock;
 
 
-    public Stock(String isbn, int stock){
+    public Stock(String isbn, String stock){
 
         this.isbn=isbn;
         this.stock=stock;
@@ -22,11 +22,11 @@ public class Stock {
         this.isbn = isbn;
     }
 
-    public int getStock() {
+    public String getStock() {
         return stock;
     }
 
-    public void setStock(int stock) {
+    public void setStock(String stock) {
         this.stock = stock;
     }
 }
