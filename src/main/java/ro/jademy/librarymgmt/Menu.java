@@ -3,6 +3,7 @@ package ro.jademy.librarymgmt;
 
 import java.util.Scanner;
 import java.util.Arrays;
+import java.util.regex.*;
 
 public class Menu {
 
@@ -16,17 +17,6 @@ public class Menu {
 
     }
 
-    public static boolean isInteger(String strNum) {
-        if (strNum == null) {
-            return false;
-        }
-        try {
-            int d = Integer.parseInt(strNum);
-        } catch (NumberFormatException nfe) {
-            return false;
-        }
-        return true;
-    }
 
 
     private int printMenu() {
@@ -43,8 +33,9 @@ public class Menu {
 
         while (!optionValid) {
             String optionString = sc.next();
-            if (isInteger(optionString)) {
-                if (Integer.parseInt(optionString) <= listOfOptions.length + 1 && Integer.parseInt(optionString) > 0) {
+            if (optionString.matches("-?[0-9]{0,10}")) {
+              //  if (Integer.parseInt(optionString) <= listOfOptions.length + 1 && Integer.parseInt(optionString) > 0) {
+                  if (optionString.matches("[1-"+listOfOptions.length+1+"]")) {
                     optionValid = true;
                     option = Integer.parseInt(optionString);
 
@@ -77,7 +68,7 @@ public class Menu {
             while (!optionValid) {
                 System.out.print("Number of pages : ");
                 String optionString = sc.next();
-                if (Menu.isInteger(optionString)) {
+                if (optionString.matches("-?[0-9]{0,10}")) {
                     if (Integer.parseInt(optionString) > 0) {
                         optionValid = true;
                         b.setNumberOfPages( Integer.parseInt(optionString));
