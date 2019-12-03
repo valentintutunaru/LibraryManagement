@@ -18,6 +18,8 @@ public class ReadingBooks {
 
         Scanner databaseScanner = new Scanner(fileName);
         databaseScanner.useDelimiter("[|\n]");
+        databaseScanner.nextLine();
+
 
         while (databaseScanner.hasNext()) {
             strBookAuth = databaseScanner.next();

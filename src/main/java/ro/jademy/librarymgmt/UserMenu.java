@@ -10,16 +10,17 @@ public class UserMenu {
     public static void userMenu() throws FileNotFoundException {
 
 //Creating arraylist of books from .CSV file
-
+        Scanner scanner = new Scanner(System.in);
+        boolean menuExit = false;
         File fileName = new File("onlineBooks_database.csv");
         ArrayList<Book> bookList = ReadingBooks.readingBook(fileName);
-        LibraryMenu.printUserMenu();
-        System.out.print("Please choose an option (1-6): ");
 
-        Scanner scanner = new Scanner(System.in);
-        int option = scanner.nextInt();
+        while (!menuExit) {
 
-        while (option != 6) {
+            LibraryMenu.printUserMenu();
+            System.out.print("Please choose an option (1-6): ");
+
+            int option = scanner.nextInt();
 
             switch (option) {
 
@@ -31,10 +32,6 @@ public class UserMenu {
                     PrintBooks.printBookTable(bookList);
                     ListBookTable.printTableBooks(148);
 
-                    System.out.println();
-                    LibraryMenu.printManagerMenu();
-                    System.out.print("Please choose an option (1-6): ");
-                    option = scanner.nextInt();
                     break;
 
                 //search for a book
@@ -45,32 +42,31 @@ public class UserMenu {
                     ListBookTable.printTableBooks(148);
                     PrintBooks.printBookTable(Library.searchBooks(filter, bookList));
                     ListBookTable.printTableBooks(148);
-                    LibraryMenu.printManagerMenu();
-                    System.out.print("\nPlease choose an option (1-6):");
-                    option = scanner.nextInt();
+
                     break;
 
                 //wishlist
                 case 3:
-
+                    System.out.println("wishlist procedure");
                     break;
 
                 //book description
                 case 4:
 
+                    System.out.println("Book description procedure");
 
                     break;
 
                 //user details
                 case 5:
-
+                    System.out.println("user details procedure");
 
                     break;
 
                 //exit
                 case 6:
-
-                    System.exit(0);
+                     menuExit=true;
+                    //System.exit(0);
                     break;
 
 

@@ -8,14 +8,17 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
 
+
         System.out.println("\nWelcome to the Public Library");
         Scanner scanner = new Scanner(System.in);
+        boolean menuExit=false;
+
+        while (!menuExit) {
         LibraryMenu.printLibraryMenu();
         System.out.print("Please choose an option: ");
         int option = scanner.nextInt();
 
 
-        while (option != 3) {
             switch (option) {
                 case 1:
                     ManagerMenu.managerMenu();
