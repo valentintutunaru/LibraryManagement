@@ -4,8 +4,87 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class WritingStock {
+public class ReadWriteFile {
+
+
     private static Scanner x;
+
+    public static ArrayList<Book> readingBook(File fileName) throws FileNotFoundException {
+        ArrayList<Book> bookList = new ArrayList<>();
+        String strBookName = "";
+        String strBookAuth = "";
+        String strPublisher = "";
+        String strIsbn = "";
+        String strGenre = "";
+        String strDescr = "";
+
+        Scanner databaseScanner = new Scanner(fileName);
+        databaseScanner.useDelimiter("[|\n]");
+        databaseScanner.nextLine();
+
+
+        while (databaseScanner.hasNext()) {
+            strBookAuth = databaseScanner.next();
+            strBookName = databaseScanner.next();
+            strGenre = databaseScanner.next();
+            strPublisher = databaseScanner.next();
+            strIsbn = databaseScanner.next();
+            strDescr = databaseScanner.next();
+
+
+            bookList.add(new Book(strBookAuth, strBookName, strGenre, strPublisher, strIsbn, strDescr));
+        }
+
+        return bookList;
+
+    }
+
+
+    public static ArrayList<Stock> readingStock(File fileName) throws FileNotFoundException {
+
+        ArrayList<Stock> stockList = new ArrayList<>();
+
+        String strIsbn="";
+        String strStock="";
+
+        Scanner databaseScanner = new Scanner(fileName);
+        databaseScanner.useDelimiter("[|\n]");
+
+        while (databaseScanner.hasNext()) {
+            strIsbn = databaseScanner.next();
+            strStock=databaseScanner.next();
+
+
+
+            stockList.add(new Stock(strIsbn, strStock));
+        }
+
+        return stockList;
+
+
+    }
+
+
+    public static ArrayList<User> readingUser(File fileName) throws FileNotFoundException {
+        ArrayList<User> usersList = new ArrayList<>();
+
+        //scanner.useDelimiter("[|\n]");
+        Scanner scanner = new Scanner(fileName);
+
+        while (scanner.hasNext()) {
+            String userLine = scanner.nextLine();
+            String[] userDetails = userLine.split(",");
+            String userId = userDetails[0];
+            String firstName = userDetails[1];
+            String lastName = userDetails[2];
+            String mailAddress = userDetails[3];
+            String username = userDetails[4];
+            String password = userDetails[5];
+            usersList.add(new User(userId, firstName, lastName, mailAddress, username, password));
+        }
+
+        return usersList;
+    }
 
     public static ArrayList<Stock> writingStock(File fileName, String newIsbn, ArrayList<Stock> stockList) throws FileNotFoundException {
 
