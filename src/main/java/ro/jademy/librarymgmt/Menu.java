@@ -7,22 +7,23 @@ import java.util.regex.*;
 
 public class Menu {
 
+
     private String[] listOfOptions;
     private String question;
 
-    public Menu(String... stuff) {
 
-        this.question = stuff[0];
-        this.listOfOptions = Arrays.copyOfRange(stuff, 1, stuff.length).clone();
+    public Menu(String... strings) {
+
+        this.question = strings[0];
+        this.listOfOptions = Arrays.copyOfRange(strings, 1, strings.length).clone();
 
     }
-
 
 
     private int printMenu() {
 
 
-        Scanner sc = new Scanner (System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.println(question + " " + "\n");
         int i;
         for (i = 1; i <= listOfOptions.length; i++) {
@@ -34,8 +35,8 @@ public class Menu {
         while (!optionValid) {
             String optionString = sc.next();
             if (optionString.matches("-?[0-9]{0,10}")) {
-              //  if (Integer.parseInt(optionString) <= listOfOptions.length + 1 && Integer.parseInt(optionString) > 0) {
-                  if (optionString.matches("[1-"+listOfOptions.length+1+"]")) {
+                //  if (Integer.parseInt(optionString) <= listOfOptions.length + 1 && Integer.parseInt(optionString) > 0) {
+                if (optionString.matches("[1-" + listOfOptions.length + 1 + "]")) {
                     optionValid = true;
                     option = Integer.parseInt(optionString);
 
@@ -52,16 +53,16 @@ public class Menu {
 
     }
 
-    public static void registerNewBook () {
+
+    public static void registerNewBook() {
 
 
-        Scanner sc = new Scanner (System.in);
+        Scanner sc = new Scanner(System.in);
         Book b = new Book();
         b.setTitle(inputString("Title : "));
         b.setAuthor(inputString("Author : "));
 
-        //if(true) {
-       if(!Main.getLibrary().searchBookByTitleAndAuthor(b.getTitle(), b.getAuthor())) {
+        if (!Main.getLibrary().searchBookByTitleAndAuthor(b.getTitle(), b.getAuthor())) {
             b.setPublisher(inputString("Publisher : "));
             b.setIsbn(inputString("Isbn :"));
             boolean optionValid = false;
@@ -71,7 +72,7 @@ public class Menu {
                 if (optionString.matches("-?[0-9]{0,10}")) {
                     if (Integer.parseInt(optionString) > 0) {
                         optionValid = true;
-                        b.setNumberOfPages( Integer.parseInt(optionString));
+                        b.setNumberOfPages(Integer.parseInt(optionString));
 
                     } else System.out.print("Number is negative. Insert new option: ");
                 } else System.out.print("Option is not an integer. Insert integer ");
@@ -80,20 +81,16 @@ public class Menu {
             b.setLanguage(inputString("Language :"));
             b.setLink(inputString("Link :"));
             Main.getLibrary().addBook(b);
-        }
-        else System.out.println("Book is already in library.");
+        } else System.out.println("Book is already in library.");
     }
 
-    public static String inputString (String question) {
 
-        Scanner sc = new Scanner (System.in);
+    public static String inputString(String question) {
 
-
-        System.out.print('\n'+question);
+        Scanner sc = new Scanner(System.in);
+        System.out.print('\n' + question);
         return sc.nextLine();
     }
-
-
 
 
     public void loadMenu() {
