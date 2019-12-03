@@ -12,7 +12,18 @@ public class ManagerMenu {
         //Creating arraylist of books from .CSV file
 
         File fileName = new File("onlineBooks_database.csv");
+        File stockFile=new File("stock_database.csv");
         ArrayList<Book> bookList = ReadingBooks.readingBook(fileName);
+        ArrayList<Stock> stockList = ReadingStock.readingStock(stockFile);
+        for (Stock stock : stockList) {
+            System.out.println(stock.getIsbn()+" "+stock.getStock());
+
+        }
+
+
+        System.out.println(stockList.size());
+        System.out.println(bookList.size());
+
 
         LibraryMenu.printManagerMenu();
         System.out.print("Please choose an option (1-8): ");
@@ -55,6 +66,16 @@ public class ManagerMenu {
                 //add new book
                 case 3:
                     Library.writingBook(new File("onlineBooks_database.csv"), bookList);
+                    String newIsbn=bookList.get(bookList.size()-1).getIsbn();
+                    WritingStock.writingStock(new File("stock_database.csv"),newIsbn, stockList);
+
+
+                    for (Stock stock : stockList) {
+                        System.out.println(stock.getIsbn()+" "+stock.getStock());
+
+                    }
+
+
                     ListBookTable.printTableBooks(148);
                     PrintBooks.printBookTable(bookList);
                     LibraryMenu.printManagerMenu();
