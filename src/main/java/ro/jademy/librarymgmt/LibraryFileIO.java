@@ -4,10 +4,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ReadWriteFile {
+public class LibraryFileIO {
 
 
-    private static Scanner x;
+    private static Scanner scanner;
 
     public static ArrayList<Book> readingBook(File fileName) throws FileNotFoundException {
         ArrayList<Book> bookList = new ArrayList<>();
@@ -148,14 +148,14 @@ public class ReadWriteFile {
             FileWriter fw = new FileWriter(tempFile, true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
-            x = new Scanner(new File(filePath));
-            x.useDelimiter("[|\n]");
+            scanner = new Scanner(new File(filePath));
+            scanner.useDelimiter("[|\n]");
 
 
-            while (x.hasNext())
+            while (scanner.hasNext())
             {
-                isbn=x.next();
-                stock=x.next();
+                isbn= scanner.next();
+                stock= scanner.next();
 
 
                 if (isbn.equals(editTerm))
@@ -168,7 +168,7 @@ public class ReadWriteFile {
                     pw.print(isbn+"|"+stock+"\n");
                 }
             }
-            x.close();
+            scanner.close();
             pw.flush();
             pw.close();
 
@@ -190,4 +190,28 @@ public class ReadWriteFile {
         }
 
     }
+
+    public ArrayList<Book> writeBookToFile(File fileName, ArrayList<Book> booklist, boolean append ) {
+        FileWriter fw=null;
+        try {
+
+            fw = new FileWriter(fileName, append);
+            for (Book book : booklist) {
+                fw.write(book.getAuthor() + "|" + book.getTitle() + "|" + book.getGenre()+"|"+book.getPublisher()+"|"+book.getDescription());
+
+            }
+            fw.close();
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+    }
+        return booklist;
+    }
+
+    public ArrayList<Book> writeBookToFile (File file, ArrayList<Book>bookList){
+        return writeBookToFile(file,bookList,false);
+    }
+
+
 }

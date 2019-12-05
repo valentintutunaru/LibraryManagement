@@ -16,8 +16,8 @@ public class ManagerMenu {
 
         File fileName = new File("onlineBooks_database.csv");
         File stockFile=new File("stock_database.csv");
-        ArrayList<Book> bookList = ReadWriteFile.readingBook(fileName);
-        ArrayList<Stock> stockList = ReadWriteFile.readingStock(stockFile);
+        ArrayList<Book> bookList = LibraryFileIO.readingBook(fileName);
+        ArrayList<Stock> stockList = LibraryFileIO.readingStock(stockFile);
         for (Stock stock : stockList) {
             System.out.println(stock.getIsbn()+" "+stock.getStock());
 
@@ -65,7 +65,7 @@ public class ManagerMenu {
                 case 3:
                     Library.writingBook(new File("onlineBooks_database.csv"), bookList);
                     String newIsbn=bookList.get(bookList.size()-1).getIsbn();
-                    ReadWriteFile.writingStock(new File("stock_database.csv"),newIsbn, stockList);
+                    LibraryFileIO.writingStock(new File("stock_database.csv"),newIsbn, stockList);
 
 
                     for (Stock stock : stockList) {
