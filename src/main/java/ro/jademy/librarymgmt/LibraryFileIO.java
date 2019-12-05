@@ -20,7 +20,7 @@ public class LibraryFileIO {
 
         Scanner databaseScanner = new Scanner(fileName);
         databaseScanner.useDelimiter("[|\n]");
-        databaseScanner.nextLine();
+        //databaseScanner.nextLine();
 
 
         while (databaseScanner.hasNext()) {
@@ -47,12 +47,14 @@ public class LibraryFileIO {
         String strIsbn="";
         String strStock="";
 
+
         Scanner databaseScanner = new Scanner(fileName);
         databaseScanner.useDelimiter("[|\n]");
+        //databaseScanner.nextLine();
 
         while (databaseScanner.hasNext()) {
             strIsbn = databaseScanner.next();
-            strStock=databaseScanner.next();
+            strStock= databaseScanner.next();
 
 
 
