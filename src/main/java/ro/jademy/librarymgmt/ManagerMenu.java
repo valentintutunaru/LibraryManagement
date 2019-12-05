@@ -20,14 +20,14 @@ public class ManagerMenu {
         ArrayList<Stock> stockList = ReadWriteFile.readingStock(stockFile);
 
 
-        for (Stock stock : stockList) {
+        /*for (Stock stock : stockList) {
             System.out.println(stock.getIsbn()+" "+stock.getStock());
 
         }
 
 
         System.out.println(stockList.size());
-        System.out.println(bookList.size());
+        System.out.println(bookList.size());*/
 
 
         while (!menuExit) {
