@@ -47,12 +47,14 @@ public class ReadWriteFile {
         String strIsbn="";
         String strStock="";
 
+
         Scanner databaseScanner = new Scanner(fileName);
         databaseScanner.useDelimiter("[|\n]");
+        databaseScanner.nextLine();
 
         while (databaseScanner.hasNext()) {
             strIsbn = databaseScanner.next();
-            strStock=databaseScanner.next();
+            strStock= databaseScanner.next();
 
 
 

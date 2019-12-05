@@ -12,7 +12,7 @@ public class ListBookTable {
             stringDashes = stringDashes + "-";
         }
         System.out.println(stringDashes);
-        System.out.println("|No.|Author                       |Title                                            |Genre              |Publisher                    |ISBN        | ");
+        System.out.println("|No.|Author                       |Title                                            |Genre              |Publisher                    |ISBN        |Stock");
         System.out.println(stringDashes);
     }
 }

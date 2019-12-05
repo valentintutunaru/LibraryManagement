@@ -12,12 +12,14 @@ public class ManagerMenu {
 
         boolean menuExit=false;
 
-        //Creating arraylist of books from .CSV file
+        //Creating arraylist of books and stocks from .CSV file
 
         File fileName = new File("onlineBooks_database.csv");
         File stockFile=new File("stock_database.csv");
         ArrayList<Book> bookList = ReadWriteFile.readingBook(fileName);
         ArrayList<Stock> stockList = ReadWriteFile.readingStock(stockFile);
+
+
         for (Stock stock : stockList) {
             System.out.println(stock.getIsbn()+" "+stock.getStock());
 
@@ -43,9 +45,9 @@ public class ManagerMenu {
 
                     //listing the book table
                     System.out.println("Here is a list with all the books in the library:");
-                    ListBookTable.printTableBooks(148);
-                    PrintBooks.printBookTable(bookList);
-                    ListBookTable.printTableBooks(148);
+                   // ListBookTable.printTableBooks(153);
+                    PrintBooks.printBookTable(bookList, stockList);
+                   // ListBookTable.printTableBooks(153);
 
 
                     break;
@@ -55,9 +57,9 @@ public class ManagerMenu {
                     System.out.print("Search for (title/author/genre/publisher/ISBN: ");
                     String filter = scanner.next();
 
-                    ListBookTable.printTableBooks(148);
+                   // ListBookTable.printTableBooks(148);
                     PrintBooks.printBookTable(Library.searchBooks(filter, bookList));
-                    ListBookTable.printTableBooks(148);
+                   // ListBookTable.printTableBooks(148);
 
                     break;
 
@@ -68,14 +70,14 @@ public class ManagerMenu {
                     ReadWriteFile.writingStock(new File("stock_database.csv"),newIsbn, stockList);
 
 
-                    for (Stock stock : stockList) {
+               /*     for (Stock stock : stockList) {
                         System.out.println(stock.getIsbn()+" "+stock.getStock());
 
-                    }
+                    }*/
 
 
-                    ListBookTable.printTableBooks(148);
-                    PrintBooks.printBookTable(bookList);
+
+                    PrintBooks.printBookTable(bookList, stockList);
                     break;
 
                 //remove a book
