@@ -11,7 +11,7 @@ public class LogUser {
 
     public static void logMenu() throws FileNotFoundException {
         File userFile = new File("userDb.csv");
-        ArrayList<User> userDb = ReadWriteFile.readingUser(userFile);
+        ArrayList<User> userDb = LibraryFileIO.readingUser(userFile);
         LibraryMenu.printLogUser();
         System.out.print("Please choose an option (1-3): ");
         int option;
