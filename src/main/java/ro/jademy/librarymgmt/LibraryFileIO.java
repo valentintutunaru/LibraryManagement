@@ -97,7 +97,7 @@ public class LibraryFileIO {
         for (Stock stock : stockList) {
 
             if (stock.getIsbn().equals(newIsbn)) {
-                System.out.println(stock.getIsbn()+" "+stock.getStock());
+                //System.out.println(stock.getIsbn()+" "+stock.getStock());
                 int stockUpdated=Integer.parseInt(stock.getStock());
                 stockUpdated++;
                 stock.setStock(Integer.toString(stockUpdated));

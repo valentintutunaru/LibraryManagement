@@ -18,18 +18,17 @@ public class ManagerMenu {
 
         ArrayList<Book> bookList = LibraryFileIO.readingBook(fileName);
 
+
+        //make book list unique
+
+        Set<Book> bookListUniqueSet = new HashSet<Book>(bookList);
+        ArrayList<Book>bookListUniq = new ArrayList<>(bookListUniqueSet);
+
+
+
+
         //sort books
-        Collections.sort(bookList);
-        for (Book book : bookList) {
-            System.out.println(book);
-        }
-
-
-
-
-
-
-
+        Collections.sort(bookListUniq);
 
 
         ArrayList<Stock> stockList = LibraryFileIO.readingStock(stockFile);
@@ -37,11 +36,6 @@ public class ManagerMenu {
         for (Stock stock1 : stockList) {
             stock.put(stock1.getIsbn(), stock1.getStock());
 
-        }
-        //System.out.println(stock);
-
-        for (Map.Entry stockElement : stock.entrySet()) {
-            System.out.println(stockElement.getKey() + " , " + stockElement.getValue());
         }
 
 
@@ -56,14 +50,12 @@ public class ManagerMenu {
 
             switch (option) {
 
+                //listing the book table
                 case 1:
 
-                    //listing the book table
-                    System.out.println("Here is a list with all the books in the library:");
-                    // ListBookTable.printTableBooks(153);
-                    PrintBooks.printBookTable(bookList, (HashMap<String, String>) stock);
-                    // ListBookTable.printTableBooks(153);
 
+                    System.out.println("Here is a list with all the books in the library:");
+                    PrintBooks.printBookTable(bookListUniq, (HashMap<String, String>) stock);
 
                     break;
 
@@ -72,9 +64,7 @@ public class ManagerMenu {
                     System.out.print("Search for (title/author/genre/publisher/ISBN: ");
                     String filter = scanner.next();
 
-                    // ListBookTable.printTableBooks(148);
-                    PrintBooks.printBookTable(Library.searchBooks(filter, bookList));
-                    // ListBookTable.printTableBooks(148);
+                    PrintBooks.printBookTable(Library.searchBooks(filter, bookListUniq));
 
                     break;
 
@@ -90,8 +80,10 @@ public class ManagerMenu {
 
                     }*/
 
+                    //bookListUniq=bookList;
 
-                    PrintBooks.printBookTable(bookList, (HashMap<String, String>) stock);
+
+                    //PrintBooks.printBookTable(bookListUniq, (HashMap<String, String>) stock);
                     break;
 
                 //remove a book

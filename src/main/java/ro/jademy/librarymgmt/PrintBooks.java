@@ -97,9 +97,10 @@ public class PrintBooks {
         printDashes(lengthLine);
 
         int i=0;
-        for (Map.Entry element: stockList.entrySet()){
+        for (int j = 0; j < bookList.size(); j++) {
+            for (Map.Entry element : stockList.entrySet()) {
 
-            for (int j = 0; j < bookList.size(); j++) {
+
                 if (bookList.get(j).getIsbn().equals(element.getKey())) {
 
                     System.out.println(String.format("%-3s %-3s %-" + author + "s %-3s %-" + title + "s %-3s %-" + genre + "s %-3s %-" + publisher + "s %-3s %-" + isbn + "s %" + stock + "s %-1s", i + 1,
@@ -107,12 +108,18 @@ public class PrintBooks {
                             "|", bookList.get(j).getPublisher(), "|", element.getKey(), "|", element.getValue(), "|"));
                     break;
                 }
+
+
+
             }
             i++;
-
-
-
         }
+        printDashes(lengthLine);
+        System.out.println(String.format("%-3s %-3s %-" + author + "s %-3s %-" + title + "s %-3s %-" + genre + "s %-3s %-" + publisher + "s %-3s %-" + isbn + "s %" + stock + "s %-1s",
+                "No", "|", "Author", "|", "Book name", "|", "Genre", "|", "Publisher", "|", "ISBN", "|", "Stock", "|"));
+        printDashes(lengthLine);
+
+
 
 
         /*for (int i = 0; i < stockList.size(); i++) {

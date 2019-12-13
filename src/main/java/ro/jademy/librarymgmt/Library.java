@@ -30,7 +30,7 @@ public class Library {
         System.out.print("Description:");
         String newDescr = scanner.nextLine();
         bookList.add(new Book(newAuthor, newTitle, newGenre, newPublisher, newISBN, newDescr));
-        PrintBooks.printBookTable(bookList);
+        //PrintBooks.printBookTable(bookList);
 
         FileWriter fw = null;
         try {
