@@ -13,7 +13,10 @@ public class UserMenu {
         Scanner scanner = new Scanner(System.in);
         boolean menuExit = false;
         File fileName = new File("onlineBooks_database.csv");
+        File stockFile=new File("stock_database.csv");
+
         ArrayList<Book> bookList = LibraryFileIO.readingBook(fileName);
+        ArrayList<Stock> stockList = LibraryFileIO.readingStock(stockFile);
 
         while (!menuExit) {
 
@@ -28,9 +31,9 @@ public class UserMenu {
 
                     //listing the book table
                     System.out.println("Here is a list with all the books in the library:");
-                    ListBookTable.printTableBooks(148);
-                    PrintBooks.printBookTable(bookList);
-                    ListBookTable.printTableBooks(148);
+                    //ListBookTable.printTableBooks(148);
+                    //PrintBooks.printBookTable(bookList, stockList);
+                    //ListBookTable.printTableBooks(148);
 
                     break;
 
@@ -65,6 +68,9 @@ public class UserMenu {
 
                 //exit
                 case 6:
+
+                    //
+
                      menuExit=true;
                     //System.exit(0);
                     break;

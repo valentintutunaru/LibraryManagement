@@ -1,6 +1,8 @@
 package ro.jademy.librarymgmt;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PrintBooks {
 
@@ -59,14 +61,15 @@ public class PrintBooks {
 
     }*/
 
-    public static void printBookTable(ArrayList<Book> bookList, ArrayList<Stock> stockList) {
+    //public static void printBookTable(ArrayList<Book> bookList, ArrayList<Stock> stockList) {
+    public static void printBookTable(ArrayList<Book> bookList, HashMap<String,String> stockList) {
 
         int author = 0;
         int title = 0;
         int genre = 0;
         int publisher = 0;
         int isbn = 0;
-        int stock = stockList.get(0).getStock().length();
+        int stock = 3; //stockList.get(0).getStock().length();
 
         for (Book book : bookList) {
             if (book.getAuthor().length() > author) {
@@ -93,7 +96,26 @@ public class PrintBooks {
                 "No", "|", "Author", "|", "Book name", "|", "Genre", "|", "Publisher", "|", "ISBN", "|", "Stock", "|"));
         printDashes(lengthLine);
 
-        for (int i = 0; i < stockList.size(); i++) {
+        int i=0;
+        for (Map.Entry element: stockList.entrySet()){
+
+            for (int j = 0; j < bookList.size(); j++) {
+                if (bookList.get(j).getIsbn().equals(element.getKey())) {
+
+                    System.out.println(String.format("%-3s %-3s %-" + author + "s %-3s %-" + title + "s %-3s %-" + genre + "s %-3s %-" + publisher + "s %-3s %-" + isbn + "s %" + stock + "s %-1s", i + 1,
+                            "|", bookList.get(j).getAuthor(), "|", bookList.get(j).getTitle(), "|", bookList.get(j).getGenre(),
+                            "|", bookList.get(j).getPublisher(), "|", element.getKey(), "|", element.getValue(), "|"));
+                    break;
+                }
+            }
+            i++;
+
+
+
+        }
+
+
+        /*for (int i = 0; i < stockList.size(); i++) {
             for (int j = 0; j < bookList.size(); j++) {
                 if (bookList.get(j).getIsbn().equals(stockList.get(i).getIsbn())) {
 
@@ -103,7 +125,7 @@ public class PrintBooks {
                     break;
                 }
             }
-        }
+        }*/
     }
 
     public static void printDashes(int number) {

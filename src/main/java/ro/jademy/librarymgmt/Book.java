@@ -4,8 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 
-public class Book {
+public class Book implements Comparable<Book> {
 
     private static final SimpleDateFormat FORMATTER = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss");
 
@@ -102,5 +103,49 @@ public class Book {
                 "Description:"+description+"\n"+
                 "Borrowed: " + (borrowDate == null ? "-" : FORMATTER.format(borrowDate)) + "\n" +
                 "Return date: " + (returnDate == null ? "-" : FORMATTER.format(returnDate)));
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "author='" + author + '\'' +
+                ", title='" + title + '\'' +
+                ", genre='" + genre + '\'' +
+                ", publisher='" + publisher + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", description='" + description + '\'' +
+                ", borrowDate=" + borrowDate +
+                ", returnDate=" + returnDate +
+                ", userIdList=" + userIdList +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return Objects.equals(author, book.author) &&
+                Objects.equals(title, book.title) &&
+                Objects.equals(genre, book.genre) &&
+                Objects.equals(publisher, book.publisher) &&
+                Objects.equals(isbn, book.isbn) &&
+                Objects.equals(description, book.description) &&
+                Objects.equals(borrowDate, book.borrowDate) &&
+                Objects.equals(returnDate, book.returnDate) &&
+                Objects.equals(userIdList, book.userIdList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(author, title, genre, publisher, isbn, description, borrowDate, returnDate, userIdList);
+    }
+
+    @Override
+    public int compareTo(Book o) {
+        if(author.compareTo(o.getAuthor())==0){
+            return title.compareTo(o.title);
+        }
+        return author.compareTo(o.author);
     }
 }
