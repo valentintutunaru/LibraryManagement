@@ -58,6 +58,20 @@ public class Library {
         return searchedBooksList;
     }
 
+
+    public static void searchIsbn(String isbn, ArrayList<Book> bookList) {
+        boolean found=true;
+        for (Book book : bookList) {
+            if (book.getIsbn().equals(isbn)) {
+                System.out.println("Book description:");
+                book.printDetails();
+                found=false;
+            }
+        }
+        if(found) {System.out.println("book not found!!!");}
+
+    }
+
     /**This method writes user object into a file
      * @param firstName
      * @param lastName

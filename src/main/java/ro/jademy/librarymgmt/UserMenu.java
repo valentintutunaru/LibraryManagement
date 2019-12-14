@@ -50,13 +50,15 @@ public class UserMenu {
 
                 //wishlist
                 case 3:
-                    System.out.println("wishlist procedure");
+                    System.out.println("Your wishlist:");
                     break;
 
-                //book description
+                //book description by ISBN
                 case 4:
+                    System.out.print("Input ISBN: ");
+                    String isbn = scanner.next();
 
-                    System.out.println("Book description procedure");
+                    Library.searchIsbn(isbn, bookList);
 
                     break;
 
