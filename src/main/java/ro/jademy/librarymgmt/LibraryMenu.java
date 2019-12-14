@@ -19,16 +19,17 @@ public class LibraryMenu {
     }
 
     public static void printManagerMenu(){
-        System.out.println("***************************");
-        System.out.println("* 1. List the books       *");
-        System.out.println("* 2. Search a book        *");
-        System.out.println("* 3. Add a book           *");
-        System.out.println("* 4. Remove a book        *");
-        System.out.println("* 5. Statistics           *");
-        System.out.println("* 6. Borrowed book        *");
-        System.out.println("* 7. Return book          *");
-        System.out.println("* 8. EXIT                 *");
-        System.out.println("***************************");
+        System.out.println("*******************************************");
+        System.out.println("* 1. List the books by author last name   *");
+        System.out.println("* 2. List the books by genre              *");
+        System.out.println("* 3. Search a book                        *");
+        System.out.println("* 4. Add a book                           *");
+        System.out.println("* 5. Remove a book                        *");
+        System.out.println("* 6. Statistics                           *");
+        System.out.println("* 7. Borrowed book                        *");
+        System.out.println("* 8. Return book                          *");
+        System.out.println("* 9. EXIT                                 *");
+        System.out.println("*******************************************");
     }
     public static void printStatisticsMenu(){
         System.out.println("***************************");

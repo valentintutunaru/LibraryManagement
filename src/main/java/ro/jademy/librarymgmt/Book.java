@@ -12,6 +12,8 @@ public class Book implements Comparable<Book> {
 
 
     private String author;
+    private String authorFirstName;
+    private String authorLastName;
     private String title;
     private String genre;
     private String publisher;
@@ -129,16 +131,12 @@ public class Book implements Comparable<Book> {
                 Objects.equals(title, book.title) &&
                 Objects.equals(genre, book.genre) &&
                 Objects.equals(publisher, book.publisher) &&
-                Objects.equals(isbn, book.isbn) &&
-                Objects.equals(description, book.description) &&
-                Objects.equals(borrowDate, book.borrowDate) &&
-                Objects.equals(returnDate, book.returnDate) &&
-                Objects.equals(userIdList, book.userIdList);
+                Objects.equals(isbn, book.isbn);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(author, title, genre, publisher, isbn, description, borrowDate, returnDate, userIdList);
+        return Objects.hash(author, title, genre, publisher, isbn);
     }
 
     @Override
