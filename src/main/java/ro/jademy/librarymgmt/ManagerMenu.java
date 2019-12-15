@@ -4,14 +4,16 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-public class ManagerMenu {
+public class ManagerMenu
+{
 
-    public static void managerMenu() throws FileNotFoundException {
+    public static void managerMenu() throws FileNotFoundException
+    {
         Scanner scanner = new Scanner(System.in);
 
         boolean menuExit = false;
 
-        //Creating arraylist of books and stocks from .CSV file
+        //create the arraylist of books and stocks from .CSV file
 
         File fileName = new File("onlineBooks_database.csv");
         File stockFile = new File("stock_database.csv");
@@ -19,40 +21,35 @@ public class ManagerMenu {
         ArrayList<Book> bookList = LibraryFileIO.readingBook(fileName);
 
 
-        //make book list unique
+        //make book list unique without duplicates
 
         Set<Book> bookListUniqueSet = new HashSet<Book>(bookList);
         ArrayList<Book>bookListUniq = new ArrayList<>(bookListUniqueSet);
 
 
-
-
-        //sort books
-
-
+        //make a map with isbn as key and stock as value
 
         ArrayList<Stock> stockList = LibraryFileIO.readingStock(stockFile);
         Map<String, String> stock = new HashMap<>();
-        for (Stock stock1 : stockList) {
+        for (Stock stock1 : stockList)
+        {
             stock.put(stock1.getIsbn(), stock1.getStock());
-
         }
 
 
-        while (!menuExit) {
+        while (!menuExit)
+        {
 
             LibraryMenu.printManagerMenu();
-
             System.out.print("Please choose an option (1-9): ");
-
 
             int option = scanner.nextInt();
 
-            switch (option) {
+            switch (option)
+            {
 
                 //listing the book table by last name
                 case 1:
-
 
                     System.out.println("List by Last Name:");
                     Collections.sort(bookListUniq, new AuthorNameComparer());
@@ -60,11 +57,8 @@ public class ManagerMenu {
 
                     break;
 
-
-
                 //listing the book table by genre
                 case 2:
-
 
                     System.out.println("List by Genre:");
                     Collections.sort(bookListUniq, new GenreComparer());
@@ -72,9 +66,7 @@ public class ManagerMenu {
 
                     break;
 
-
                 //search for a book
-
                 case 3:
                     System.out.print("Search for (title/author/genre/publisher/ISBN: ");
                     String filter = scanner.next();
@@ -89,21 +81,10 @@ public class ManagerMenu {
                     String newIsbn = bookList.get(bookList.size() - 1).getIsbn();
                     LibraryFileIO.writingStock(new File("stock_database.csv"), newIsbn, stockList);
 
-
-               /*     for (Stock stock : stockList) {
-                        System.out.println(stock.getIsbn()+" "+stock.getStock());
-
-                    }*/
-
-                    //bookListUniq=bookList;
-
-
-                    //PrintBooks.printBookTable(bookListUniq, (HashMap<String, String>) stock);
                     break;
 
                 //remove a book
                 case 5:
-
 
                     System.out.println("remove a book");
                     break;

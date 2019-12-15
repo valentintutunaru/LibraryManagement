@@ -4,12 +4,14 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class LibraryFileIO {
+public class LibraryFileIO
+{
 
 
     private static Scanner scanner;
 
-    public static ArrayList<Book> readingBook(File fileName) throws FileNotFoundException {
+    public static ArrayList<Book> readingBook(File fileName) throws FileNotFoundException
+    {
         ArrayList<Book> bookList = new ArrayList<>();
         String strBookName = "";
         String strBookAuth = "";
@@ -23,7 +25,8 @@ public class LibraryFileIO {
         //databaseScanner.nextLine();
 
 
-        while (databaseScanner.hasNext()) {
+        while (databaseScanner.hasNext())
+        {
             strBookAuth = databaseScanner.next();
             strBookName = databaseScanner.next();
             strGenre = databaseScanner.next();
@@ -40,7 +43,8 @@ public class LibraryFileIO {
     }
 
 
-    public static ArrayList<Stock> readingStock(File fileName) throws FileNotFoundException {
+    public static ArrayList<Stock> readingStock(File fileName) throws FileNotFoundException
+    {
 
         ArrayList<Stock> stockList = new ArrayList<>();
 
@@ -52,7 +56,8 @@ public class LibraryFileIO {
         databaseScanner.useDelimiter("[|\n]");
         //databaseScanner.nextLine();
 
-        while (databaseScanner.hasNext()) {
+        while (databaseScanner.hasNext())
+        {
             strIsbn = databaseScanner.next();
             strStock= databaseScanner.next();
 
@@ -67,13 +72,15 @@ public class LibraryFileIO {
     }
 
 
-    public static ArrayList<User> readingUser(File fileName) throws FileNotFoundException {
+    public static ArrayList<User> readingUser(File fileName) throws FileNotFoundException
+    {
         ArrayList<User> usersList = new ArrayList<>();
 
         //scanner.useDelimiter("[|\n]");
         Scanner scanner = new Scanner(fileName);
 
-        while (scanner.hasNext()) {
+        while (scanner.hasNext())
+        {
             String userLine = scanner.nextLine();
             String[] userDetails = userLine.split(",");
             String userId = userDetails[0];
@@ -88,16 +95,18 @@ public class LibraryFileIO {
         return usersList;
     }
 
-    public static ArrayList<Stock> writingStock(File fileName, String newIsbn, ArrayList<Stock> stockList) throws FileNotFoundException {
+    public static ArrayList<Stock> writingStock(File fileName, String newIsbn, ArrayList<Stock> stockList) throws FileNotFoundException
+    {
 
         int defaultStock = 1;
         boolean isInList = false;
 
 
-        for (Stock stock : stockList) {
+        for (Stock stock : stockList)
+        {
 
-            if (stock.getIsbn().equals(newIsbn)) {
-                //System.out.println(stock.getIsbn()+" "+stock.getStock());
+            if (stock.getIsbn().equals(newIsbn))
+            {
                 int stockUpdated=Integer.parseInt(stock.getStock());
                 stockUpdated++;
                 stock.setStock(Integer.toString(stockUpdated));
@@ -106,20 +115,22 @@ public class LibraryFileIO {
                 String newStock = stock.getStock();
                 editRecord("stock_database.csv", foundIsbn, newIsbn, newStock);
 
-
                 break;
-                //edit csv file
+
             }
 
         }
 
-        if (isInList) {
-        } else {
+        if (isInList)
+        {
+        } else
+            {
             stockList.add(new Stock(newIsbn, "1"));
 
 
             //FileWriter fw = null;
-            try {
+            try
+            {
                 FileWriter fw = new FileWriter(fileName, true);
                 BufferedWriter bw=new BufferedWriter(fw);
                 PrintWriter pw = new PrintWriter(bw);
@@ -132,13 +143,12 @@ public class LibraryFileIO {
             }
         }
 
-
-
         return stockList;
 
     }
 
-    public static void editRecord(String filePath, String editTerm, String newIsbn, String newStock) {
+    public static void editRecord(String filePath, String editTerm, String newIsbn, String newStock)
+    {
 
         String tempFile = "temp.csv";
         File oldFile = new File(filePath);
@@ -146,7 +156,8 @@ public class LibraryFileIO {
         String isbn = "";
         String stock = "";
 
-        try {
+        try
+        {
             FileWriter fw = new FileWriter(tempFile, true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
@@ -193,25 +204,30 @@ public class LibraryFileIO {
 
     }
 
-    public ArrayList<Book> writeBookToFile(File fileName, ArrayList<Book> booklist, boolean append ) {
+    public ArrayList<Book> writeBookToFile(File fileName, ArrayList<Book> booklist, boolean append )
+    {
         FileWriter fw=null;
-        try {
+        try
+        {
 
             fw = new FileWriter(fileName, append);
-            for (Book book : booklist) {
+            for (Book book : booklist)
+            {
                 fw.write(book.getAuthor() + "|" + book.getTitle() + "|" + book.getGenre()+"|"+book.getPublisher()+"|"+book.getDescription());
 
             }
             fw.close();
 
         }
-        catch (Exception e){
+        catch (Exception e)
+        {
             e.printStackTrace();
-    }
+        }
         return booklist;
     }
 
-    public ArrayList<Book> writeBookToFile (File file, ArrayList<Book>bookList){
+    public ArrayList<Book> writeBookToFile (File file, ArrayList<Book>bookList)
+    {
         return writeBookToFile(file,bookList,false);
     }
 

@@ -6,7 +6,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 
-public class Book implements Comparable<Book> {
+public class Book implements Comparable<Book>
+{
 
     private static final SimpleDateFormat FORMATTER = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss");
 
@@ -24,7 +25,8 @@ public class Book implements Comparable<Book> {
     private ArrayList<String> userIdList = new ArrayList<>();
 
 
-    public Book(String author, String title, String genre, String publisher, String isbn, String description) {
+    public Book(String author, String title, String genre, String publisher, String isbn, String description)
+    {
 
         this.author = author;
         this.title = title;
@@ -84,31 +86,37 @@ public class Book implements Comparable<Book> {
         this.genre = genre;
     }
 
-    public void setBorrow(int days) {
+    public void setBorrow(int days)
+    {
         borrowDate = new Date();
         returnDate = setReturnDate(days);
     }
 
-    public Date setReturnDate(int days) {
+    public Date setReturnDate(int days)
+    {
         Calendar cal = Calendar.getInstance();
         cal.setTime(borrowDate);
         cal.add(Calendar.DATE, days); //minus number would decrement the days
         return cal.getTime();
     }
 
-    public void printDetails() {
+    public void printDetails()
+    {
         System.out.println("Book name is: " + title + "\n" +
                 "Author: " + author + "\n"
                 + "Publisher: " + publisher + "\n" +
                 "ISBN: " + isbn + "\n" +
                 "Genre: " + genre + "\n" +
-                "Description:"+description+"\n"+
+                "Description:"+description+"\n"
+                /*+
                 "Borrowed: " + (borrowDate == null ? "-" : FORMATTER.format(borrowDate)) + "\n" +
-                "Return date: " + (returnDate == null ? "-" : FORMATTER.format(returnDate)));
+                "Return date: " + (returnDate == null ? "-" : FORMATTER.format(returnDate))*/
+        );
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Book{" +
                 "author='" + author + '\'' +
                 ", title='" + title + '\'' +
@@ -123,7 +131,8 @@ public class Book implements Comparable<Book> {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
@@ -135,13 +144,16 @@ public class Book implements Comparable<Book> {
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         return Objects.hash(author, title, genre, publisher, isbn);
     }
 
     @Override
-    public int compareTo(Book o) {
-        if(author.compareTo(o.getAuthor())==0){
+    public int compareTo(Book o)
+    {
+        if(author.compareTo(o.getAuthor())==0)
+        {
             return title.compareTo(o.title);
         }
         return author.compareTo(o.author);

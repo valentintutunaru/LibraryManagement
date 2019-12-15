@@ -5,11 +5,13 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class LogUser {
+public class LogUser
+{
 
     private static Scanner scanner = new Scanner(System.in);
 
-    public static void logMenu() throws FileNotFoundException {
+    public static void logMenu() throws FileNotFoundException
+    {
         File userFile = new File("userDb.csv");
         ArrayList<User> userDb = LibraryFileIO.readingUser(userFile);
         LibraryMenu.printLogUser();
@@ -17,21 +19,25 @@ public class LogUser {
         int option;
         option = scanner.nextInt();
 
-        switch (option) {
+        switch (option)
+        {
             case 1:
                 boolean userValidation = true;
                 System.out.print("Username: ");
                 String username = scanner.next();
                 System.out.print("Password: ");
                 String password = scanner.next();
-                for (User user : userDb) {
+                for (User user : userDb)
+                {
                     if (user.getUsername().toLowerCase().equals(username.toLowerCase())
-                            && user.getPassword().toLowerCase().equals(password.toLowerCase())) {
+                            && user.getPassword().toLowerCase().equals(password.toLowerCase()))
+                    {
                         UserMenu.userMenu();
                         userValidation = false;
                     }
                 }
-                if (userValidation = true) {
+                if (userValidation = true)
+                {
                     System.out.println("Invalid username or password");
                 }
                 break;
